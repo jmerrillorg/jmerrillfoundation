@@ -1,0 +1,22 @@
+[
+    {
+      "title": "AI Concierge",
+      "description": "A Power Virtual Agent built with Copilot Studio that helps volunteers and donors find answers, sign up, and connect instantly.",
+      "category": "AI"
+    },
+    {
+      "title": "Blockchain Donor Receipts",
+      "description": "A future-facing experiment to issue NFT-backed receipts and badges to major contributors for transparency and engagement.",
+      "category": "Blockchain"
+    },
+    {
+      "title": "Virtual Book Club",
+      "description": "Interactive, family-based digital reading experience for children and parents across communities—fueled by community voices.",
+      "category": "Community"
+    },
+    {
+      "title": "Youth Tech Fellowship",
+      "description": "Empowering youth to lead digital projects, build skills, and shape their community through innovation and mentorship.",
+      "category": "Education"
+    }
+  ]
