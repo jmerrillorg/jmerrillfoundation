@@ -1,0 +1,32 @@
+:root{
+  --bg:#0b0c10; --card:#121319; --ink:#e9eef8; --muted:#a9b1c6;
+  --accent:#8b5cf6; /* violet */
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink); background:radial-gradient(1200px 600px at 70% -10%,rgba(139,92,246,.15),transparent), var(--bg);
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:960px;margin:auto;padding:48px 20px}
+.brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:32px}
+.logo{font-weight:800;letter-spacing:.2px}
+.tag{color:var(--muted);font-size:.9rem}
+.hero h1{font-size: clamp(2rem, 5vw, 3rem); line-height:1.15; margin:0 0 12px}
+.accent{color:var(--accent)}
+.lede{color:var(--muted);max-width:720px;margin:0 0 20px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 32px}
+.btn{
+  padding:12px 16px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:transparent;color:var(--ink);
+  transition:.2s; font-weight:600
+}
+.btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.25)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:white}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0 42px}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+  border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px;font-weight:600;
+}
+.card:hover{border-color:rgba(255,255,255,.2);transform:translateY(-1px)}
+.foot{color:var(--muted)}
