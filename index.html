@@ -1,13 +1,55 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>J Merrill Foundation — Coming Soon</title>
+  <meta name="description" content="J Merrill Foundation, Inc. — empowering communities with purpose, wisdom, and innovation." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟣</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="brand">
+      <div class="logo">J Merrill Foundation, Inc.</div>
+      <div class="tag">Part of J Merrill One</div>
+    </header>
+
+    <section class="hero">
+      <h1>Empowering communities with<br><span class="accent">purpose, wisdom, and innovation</span>.</h1>
+      <p class="lede">A faith-centered nonprofit using technology, storytelling, and compassion to change lives.</p>
+      <div class="cta">
+        <a class="btn primary" href="#" aria-disabled="true">Donate (soon)</a>
+        <a class="btn" href="mailto:info@jmerrill.foundation">Contact</a>
+      </div>
+    </section>
+
+    <section class="cards">
+      <a class="card" href="https://jmerrill.one" target="_blank" rel="noopener">Visit J Merrill One →</a>
+      <a class="card" href="https://jmerrill.pub" target="_blank" rel="noopener">Publishing →</a>
+      <a class="card" href="https://jmerrill.financial" target="_blank" rel="noopener">Financial →</a>
+    </section>
+
+    <footer class="foot">
+      <small>© <span id="y"></span> J Merrill Foundation, Inc. All rights reserved.</small>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Simple org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "J Merrill Foundation, Inc.",
+    "url": "https://www.jmerrill.foundation",
+    "parentOrganization": { "@type": "Organization", "name": "J Merrill One", "url": "https://jmerrill.one" }
+  }
+  </script>
+</body>
 </html>
