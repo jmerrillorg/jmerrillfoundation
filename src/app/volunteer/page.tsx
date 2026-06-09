@@ -138,7 +138,7 @@ export default function VolunteerPage() {
               Ready to Get Started?
             </h2>
             <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: 1.6 }}>
-              Start with the Foundation interest form. It helps us route volunteer interest, board interest, school partnership inquiries, Story Hour reader interest, Reading Station requests, youth author or classroom author inquiries, ESL support interest, and other Foundation questions to the right next step.
+              Start with the Foundation interest form. It helps us route volunteer interest, board interest, school partnership inquiries, Story Hour reader interest, Reading Station requests, youth author or classroom author inquiries, ESL support interest, donor questions, and general Foundation inquiries to the right next step.
             </p>
 
             {/* Microsoft Forms Embed */}

@@ -7,10 +7,10 @@ export const metadata: Metadata = {
 }
 
 const tiers = [
-  { name: 'Literacy Circle', amount: '$500/yr', description: 'Website recognition and our eternal gratitude. Every Literacy Circle member is listed on our donor wall.', color: 'var(--text-muted)', bg: 'var(--surface)' },
-  { name: 'Story Champion', amount: '$2,500/yr', description: 'Your name is attached to a Story Hour Library reading session. A video reading dedicated in your honor.', color: 'var(--primary)', bg: 'rgba(147, 50, 158, 0.05)', featured: true },
-  { name: 'Legacy Partner', amount: '$10,000/yr', description: 'A named program or event. Your legacy is woven into the Foundation\'s active work — visible in the community.', color: '#1A5276', bg: '#D6EAF8' },
-  { name: 'Endowment Seat', amount: '$50,000+', description: 'A named legacy gift designed to support Foundation programs over time. Legacy giving conversations may be coordinated separately upon request.', color: '#7B4F00', bg: '#FFF3CD' },
+  { name: 'Literacy Circle', amount: '$500/yr', description: 'Helps support books, literacy access, and community program operations. Recognition may be offered according to Foundation policy.', color: 'var(--text-muted)', bg: 'var(--surface)' },
+  { name: 'Story Champion', amount: '$2,500/yr', description: 'Helps support Story Hour development, reader coordination, and access to read-aloud experiences for children and families.', color: 'var(--primary)', bg: 'rgba(147, 50, 158, 0.05)', featured: true },
+  { name: 'Legacy Partner', amount: '$10,000/yr', description: 'Helps support larger program needs, school partnerships, reading access, and community literacy work over time.', color: '#1A5276', bg: '#D6EAF8' },
+  { name: 'Endowment Seat', amount: '$50,000+', description: 'Helps support long-term Foundation capacity and program sustainability. Legacy giving conversations may be coordinated separately upon request.', color: '#7B4F00', bg: '#FFF3CD' },
 ]
 
 export default function DonatePage() {
@@ -93,7 +93,7 @@ export default function DonatePage() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 500, color: 'var(--dark)', marginBottom: '0.75rem' }}>Named Giving Tiers</h2>
-            <p style={{ fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '520px', margin: '0 auto' }}>For donors who want their investment in literacy recognized — and their legacy to last.</p>
+            <p style={{ fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '520px', margin: '0 auto' }}>For donors who want to make a larger commitment to literacy, access, and community transformation.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
             {tiers.map(tier => (
@@ -114,7 +114,7 @@ export default function DonatePage() {
             ))}
           </div>
           <p style={{ textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '2rem' }}>
-            To discuss named giving, Endowment Seats, or charitable bequests, contact{' '}
+            To discuss larger gifts, legacy giving, or donor questions, contact{' '}
             <a href="mailto:foundation@jmerrill.one" style={{ color: 'var(--primary)', textDecoration: 'none' }}>foundation@jmerrill.one</a>
           </p>
         </div>
