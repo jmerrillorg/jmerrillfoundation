@@ -1,10 +1,11 @@
-# jmerrill.foundation — Site Deployment Guide
+# jmerrill.org — Site Deployment Guide
 
-**Project:** J Merrill Foundation Inc. Website  
-**Domain:** jmerrill.foundation  
-**Stack:** Next.js 14 App Router · TypeScript · Tailwind CSS  
-**Hosting:** Azure Static Web Apps (JM1 Foundation Azure credit)  
-**Repository:** github.com/jmerrillorg/jmerrill-foundation  
+**Project:** J Merrill Foundation Inc. Website
+**Canonical Domain:** www.jmerrill.org
+**Secondary Domain:** jmerrill.foundation may remain redirected or secondary
+**Stack:** Next.js 14 App Router · TypeScript · Tailwind CSS
+**Hosting:** Azure Static Web Apps (JM1 Foundation Azure credit)
+**Repository:** github.com/jmerrillorg/jmerrill-foundation
 
 ---
 
@@ -73,9 +74,9 @@ Azure will auto-generate the GitHub Actions workflow token and add it to the rep
 ### Step 5 — Custom Domain
 
 1. In Azure Static Web Apps → Custom domains → Add
-2. Enter: `www.jmerrill.foundation`
+2. Enter: `www.jmerrill.org`
 3. Add the CNAME record to DNS at your domain registrar pointing to the Azure-provided hostname
-4. Also add: `jmerrill.foundation` (apex) → use Azure's alias record or redirect
+4. Keep `jmerrill.foundation` as a secondary redirected domain if needed
 
 ### Step 6 — Microsoft Forms Embed
 
@@ -128,7 +129,7 @@ When Stripe is ready:
 | /volunteer | Get involved | 6 opportunity cards + embedded MS Forms intake |
 | /donate | Giving | Stripe placeholder, where it goes breakdown, 4 named giving tiers |
 | /story-hour | Digital library | How it works, QR bridge, copyright tiers, reader CTA |
-| /classroom-author | Signature program | Chillicothe proof, 5-step process, youth pipeline, school partnership CTA |
+| /classroom-author | Signature program | Chillicothe proof, 5-step process, planned youth author opportunities, school partnership CTA |
 | /our-libraries | Reading Stations | Parsons Ave station details, charter info, expansion plan |
 
 ---
