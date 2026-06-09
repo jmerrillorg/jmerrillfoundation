@@ -11,13 +11,13 @@ export default function StoryHourPage() {
     <>
       <section style={{ backgroundColor: 'var(--dark)', paddingTop: '10rem', paddingBottom: '5rem' }}>
         <div className="container">
-          <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#5C2D91', backgroundColor: '#E8D5F5', padding: '0.3rem 0.85rem', borderRadius: '100px', display: 'inline-block', marginBottom: '1.5rem' }}>Launching 2025</span>
+          <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#5C2D91', backgroundColor: '#E8D5F5', padding: '0.3rem 0.85rem', borderRadius: '100px', display: 'inline-block', marginBottom: '1.5rem' }}>In Development for 2026</span>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 500, color: '#FFFFFF', lineHeight: 1.1, maxWidth: '700px', marginBottom: '1.5rem' }}>
             Story Hour Library —<br />
             <em style={{ color: 'var(--secondary)' }}>Community Voices Reading to Community Children.</em>
           </h1>
           <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.65)', maxWidth: '560px', lineHeight: 1.7 }}>
-            A free digital library where volunteers record themselves reading children's books. Children access the library anytime — no account, no login, no cost. Every title links to a physical book purchase.
+            A free digital library in development for 2026 where volunteers record themselves reading children's books. Children will be able to access the library anytime — no account, no login, no cost.
           </p>
         </div>
       </section>
@@ -75,7 +75,7 @@ export default function StoryHourPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {[
               { tier: 'Tier 1 — Available at Launch', items: ['Public domain children\'s books', 'J Merrill Publishing titles', 'Books with written publisher authorization'], color: '#1A6B3C', bg: '#D4EDDA' },
-              { tier: 'Tier 2 — Expansion Phase', items: ['Licensed publisher agreements', 'Author consent contracts (tracked in Dataverse)', 'Major publisher partnerships'], color: '#1A5276', bg: '#D6EAF8' },
+              { tier: 'Tier 2 — Expansion Phase', items: ['Licensed publisher agreements', 'Author consent agreements', 'Publisher partnership conversations'], color: '#1A5276', bg: '#D6EAF8' },
             ].map(tier => (
               <div key={tier.tier} style={{ backgroundColor: '#FFFFFF', border: '1px solid rgba(0,0,0,0.07)', borderRadius: '12px', padding: '1.5rem' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: 600, color: tier.color, backgroundColor: tier.bg, padding: '0.25rem 0.65rem', borderRadius: '100px', display: 'inline-block', marginBottom: '0.75rem' }}>{tier.tier}</span>

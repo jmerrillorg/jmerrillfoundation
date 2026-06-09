@@ -3,14 +3,14 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Donate',
-  description: 'Support J Merrill Foundation\'s literacy programs. Every dollar funds a reader, a student author, or a community library.',
+  description: 'Support J Merrill Foundation literacy programs. Your gift helps fund books, literacy access, community programs, and responsible program operations.',
 }
 
 const tiers = [
   { name: 'Literacy Circle', amount: '$500/yr', description: 'Website recognition and our eternal gratitude. Every Literacy Circle member is listed on our donor wall.', color: 'var(--text-muted)', bg: 'var(--surface)' },
   { name: 'Story Champion', amount: '$2,500/yr', description: 'Your name is attached to a Story Hour Library reading session. A video reading dedicated in your honor.', color: 'var(--primary)', bg: 'rgba(147, 50, 158, 0.05)', featured: true },
   { name: 'Legacy Partner', amount: '$10,000/yr', description: 'A named program or event. Your legacy is woven into the Foundation\'s active work — visible in the community.', color: '#1A5276', bg: '#D6EAF8' },
-  { name: 'Endowment Seat', amount: '$50,000+', description: 'A permanent named fund. Your gift sustains Foundation programs in perpetuity. Estate planning consultations available.', color: '#7B4F00', bg: '#FFF3CD' },
+  { name: 'Endowment Seat', amount: '$50,000+', description: 'A named legacy gift designed to support Foundation programs over time. Legacy giving conversations may be coordinated separately upon request.', color: '#7B4F00', bg: '#FFF3CD' },
 ]
 
 export default function DonatePage() {
@@ -21,7 +21,7 @@ export default function DonatePage() {
           <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--secondary)', marginBottom: '1rem', fontWeight: 500 }}>Support the Work</p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 500, color: '#FFFFFF', lineHeight: 1.1, maxWidth: '700px', marginBottom: '1.5rem' }}>
             Every Dollar<br />
-            <em style={{ color: 'var(--secondary)' }}>Funds a Reader.</em>
+            <em style={{ color: 'var(--secondary)' }}>Can Help Open a Door.</em>
           </h1>
           <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.65)', maxWidth: '520px', lineHeight: 1.7 }}>
             Your donation supports the Parsons Avenue Reading Station, Story Hour Library, the Classroom Author Project, and Community Table — programs that reach children, families, and adult learners across Columbus.
@@ -73,8 +73,8 @@ export default function DonatePage() {
               { label: 'Reading Station Restocks', description: 'Funds diverse, representative books for the Parsons Avenue station and future network stations.' },
               { label: 'Story Hour Library', description: 'Covers storage, platform costs, and volunteer coordination for our digital reading library.' },
               { label: 'Classroom Author Project', description: 'Funds printing, editorial support, and distribution for student-authored books.' },
-              { label: 'Community Table', description: 'Supports Thanksgiving meal logistics, food costs, and distribution for 150 Columbus families in 2025.' },
-              { label: 'Literacy Bridge (ESL)', description: 'Funds instructor stipends, curriculum, and Microsoft Teams licenses for ESL program participants.' },
+              { label: 'Community Table', description: 'Supports Thanksgiving meal logistics, food costs, and distribution toward the 150-family goal in 2026.' },
+              { label: 'Literacy Bridge (ESL)', description: 'Funds instructor stipends, curriculum, and virtual learning access for ESL program participants.' },
             ].map(item => (
               <div key={item.label} style={{ backgroundColor: '#FFFFFF', border: '1px solid rgba(147, 50, 158, 0.08)', borderRadius: '10px', padding: '1.25rem', display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '1rem', alignItems: 'start' }}>
                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--primary)', marginTop: '6px', flexShrink: 0 }} />

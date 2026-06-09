@@ -13,13 +13,16 @@ export default function Footer() {
               J Merrill Foundation Inc.
             </h3>
             <p style={{ fontSize: '0.7rem', color: 'rgba(203, 170, 203, 0.7)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 400 }}>
-              A J Merrill One Company
+              Literacy · Community · Transformation
             </p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', marginBottom: '1.25rem' }}>
-              The Community Impact Operating Layer of J Merrill One — advancing literacy in all its forms across Columbus, Ohio and beyond.
+              Advancing literacy, dignity, authorship, and community access across Columbus, Ohio through books, programs, partnerships, and trusted local relationships.
             </p>
             <p style={{ fontSize: '0.8rem', color: 'var(--secondary)', fontFamily: 'var(--font-mono)', letterSpacing: '0.05em' }}>
               501(c)(3) Nonprofit Organization
+            </p>
+            <p style={{ fontSize: '0.75rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.4)', marginTop: '0.75rem' }}>
+              Supported by the broader J Merrill One ecosystem.
             </p>
           </div>
 
