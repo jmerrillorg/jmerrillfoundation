@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://jmerrill.org',
+    url: 'https://www.jmerrill.org',
     siteName: 'J Merrill Foundation Inc.',
     title: 'J Merrill Foundation Inc. — Literacy. Community. Transformation.',
     description: 'Advancing literacy, dignity, authorship, and community access across Columbus, Ohio.',

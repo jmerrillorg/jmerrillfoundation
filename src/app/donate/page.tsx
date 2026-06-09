@@ -10,7 +10,7 @@ const tiers = [
   { name: 'Literacy Circle', amount: '$500/yr', description: 'Helps support books, literacy access, and community program operations. Recognition may be offered according to Foundation policy.', color: 'var(--text-muted)', bg: 'var(--surface)' },
   { name: 'Story Champion', amount: '$2,500/yr', description: 'Helps support Story Hour development, reader coordination, and access to read-aloud experiences for children and families.', color: 'var(--primary)', bg: 'rgba(147, 50, 158, 0.05)', featured: true },
   { name: 'Legacy Partner', amount: '$10,000/yr', description: 'Helps support larger program needs, school partnerships, reading access, and community literacy work over time.', color: '#1A5276', bg: '#D6EAF8' },
-  { name: 'Endowment Seat', amount: '$50,000+', description: 'Helps support long-term Foundation capacity and program sustainability. Legacy giving conversations may be coordinated separately upon request.', color: '#7B4F00', bg: '#FFF3CD' },
+  { name: 'Sustaining Gift', amount: '$50,000+', description: 'Helps support long-term Foundation capacity and program sustainability. Legacy giving conversations may be coordinated separately upon request.', color: '#7B4F00', bg: '#FFF3CD' },
 ]
 
 export default function DonatePage() {
