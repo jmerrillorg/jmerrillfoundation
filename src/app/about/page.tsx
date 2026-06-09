@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'The story of J Merrill Foundation Inc. — founded to address literacy in all its forms, powered by a mission that was always bigger than one program.',
+  description: 'The story of J Merrill Foundation Inc. — a Columbus nonprofit advancing literacy, dignity, authorship, and community access.',
 }
 
 export default function AboutPage() {
@@ -14,7 +14,7 @@ export default function AboutPage() {
           <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--secondary)', marginBottom: '1rem', fontWeight: 500 }}>Our Story</p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 500, color: '#FFFFFF', lineHeight: 1.1, maxWidth: '700px' }}>
             Built for This Moment —<br />
-            <em style={{ color: 'var(--secondary)' }}>Where Literacy, Technology, and Community Converge.</em>
+            <em style={{ color: 'var(--secondary)' }}>Where Literacy, Dignity, and Community Meet.</em>
           </h1>
         </div>
       </section>
@@ -35,31 +35,31 @@ export default function AboutPage() {
             Founding Story
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.85, marginBottom: '1.25rem' }}>
-            J Merrill Foundation was founded by Jackie Smith Jr. as the community impact layer of J Merrill One — a multi-brand enterprise spanning publishing, financial services, media production, and faith-based operations. From the beginning, the Foundation was designed to be intentionally broad in its mission scope. Literacy, in all its forms, was the anchor.
+            J Merrill Foundation was founded by Jackie Smith Jr. to help people and communities access the tools, relationships, and encouragement that literacy makes possible. From the beginning, the Foundation was designed to serve more than one program or moment. Literacy, in all its forms, was the anchor.
           </p>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.85, marginBottom: '1.25rem' }}>
             The Foundation's earliest programming began with the Thanksgiving meal program in partnership with the Byron Saunders Foundation, grew to include ESL classes and Mid-Ohio Food Bank volunteering, and reached its highest expression with the Chillicothe 8th Grade publishing project — where students became published authors.
           </p>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.85, marginBottom: '3rem' }}>
-            Through board changes and the disruption of COVID-19, the Foundation paused. In 2025, it is relaunching — not as a restart, but as a maturation. The programs are proven. The technology is live. The mission is clearer than ever.
+            Through board changes and the disruption of COVID-19, the Foundation paused. In 2026, it is active again — not as a restart, but as a maturation. The programs are proven. The stewardship systems are in place. The mission is clearer than ever.
           </p>
 
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 500, color: 'var(--dark)', marginBottom: '1.25rem' }}>
-            Our Position in J Merrill One
+            How J Merrill One Supports the Work
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.85, marginBottom: '1.25rem' }}>
-            The Foundation is the Community Impact Operating Layer of J Merrill One — the enterprise that also includes J Merrill Publishing, J Merrill Financial, J Merrill Productions, and Agape International Cathedral. Every Foundation program connects to this broader ecosystem.
+            The Foundation is supported by the broader J Merrill One ecosystem, which includes publishing, financial education, media, and faith-community relationships. That support gives the Foundation access to practical experience, creative capacity, and community relationships without making the ecosystem the center of the mission.
           </p>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.85, marginBottom: '2.5rem' }}>
-            The Foundation holds the Microsoft nonprofit technology grant that powers the entire J Merrill One enterprise — including Dynamics 365, Power Platform, Azure, and Microsoft 365. This is not a small nonprofit scraping for technology access. It is a literacy-centered infrastructure platform operating on enterprise tooling.
+            The Foundation also uses professional nonprofit tools to coordinate programs, keep records, support reporting, and steward community trust responsibly. Technology matters here because it helps the work stay organized, accountable, and ready to grow.
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
             {[
               { label: 'Organization Type', value: '501(c)(3) Nonprofit' },
               { label: 'Founded', value: 'Columbus, Ohio' },
-              { label: 'Parent Enterprise', value: 'J Merrill One' },
-              { label: 'Technology', value: 'Microsoft Nonprofit Grant' },
+              { label: 'Support Context', value: 'J Merrill One' },
+              { label: 'Stewardship Tools', value: 'Nonprofit technology systems' },
               { label: 'Little Free Library', value: 'Charter #154418' },
               { label: 'Contact', value: 'foundation@jmerrill.one' },
             ].map(item => (
@@ -84,7 +84,7 @@ export default function AboutPage() {
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: '#FFFFFF', fontWeight: 500, marginBottom: '0.25rem' }}>Jackie Smith Jr.</h3>
               <p style={{ color: 'var(--secondary)', fontSize: '0.875rem', marginBottom: '1rem' }}>Founder & CEO, J Merrill Foundation Inc. | Founder & CEO, J Merrill One</p>
               <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem', lineHeight: 1.75 }}>
-                Jackie founded J Merrill Foundation as the community arm of J Merrill One. As the sole systems architect across five enterprise divisions, he built the Foundation's technology infrastructure from the ground up — and personally leads the relaunch. The Foundation's board is currently being rebuilt and expanded to reflect the community it serves.
+                Jackie founded J Merrill Foundation to carry the community mission of J Merrill One into direct literacy work. He built the Foundation's operating systems from the ground up and now leads its 2026 relaunch. The Foundation's board is currently being rebuilt and expanded to reflect the community it serves.
               </p>
             </div>
           </div>

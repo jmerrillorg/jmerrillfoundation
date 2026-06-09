@@ -11,7 +11,7 @@ export default function OurLibrariesPage() {
     <>
       <section style={{ backgroundColor: 'var(--dark)', paddingTop: '10rem', paddingBottom: '5rem' }}>
         <div className="container">
-          <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--secondary)', marginBottom: '1rem', fontWeight: 500 }}>Physical Community Infrastructure</p>
+          <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--secondary)', marginBottom: '1rem', fontWeight: 500 }}>Free Books in the Neighborhood</p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 500, color: '#FFFFFF', lineHeight: 1.1, maxWidth: '700px', marginBottom: '1.5rem' }}>
             Reading Stations —<br />
             <em style={{ color: 'var(--secondary)' }}>Free Books, Always.</em>
@@ -73,7 +73,7 @@ export default function OurLibrariesPage() {
               Sponsor a Restock
             </h3>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-              Our Reading Stations run on community support. Sponsor a monthly restock of the Parsons Avenue station and keep diverse, representative books in the hands of Columbus families. Every donation funds books, not overhead.
+              Our Reading Stations run on community support. Sponsor a monthly restock of the Parsons Avenue station and help keep diverse, representative books in the hands of Columbus families. Your gift helps fund books, literacy access, and responsible program operations.
             </p>
             <Link href="/donate" style={{ display: 'inline-block', backgroundColor: 'var(--primary)', color: '#FFFFFF', textDecoration: 'none', padding: '0.75rem 1.75rem', borderRadius: '100px', fontSize: '0.9rem', fontWeight: 500 }}>
               Sponsor a Restock
@@ -92,10 +92,10 @@ export default function OurLibrariesPage() {
             Phase 2 of our Reading Station program brings new stations to sites near Agape International Cathedral, Chillicothe (our Classroom Author Project partner school), Mid-Ohio Food Bank volunteer sites, and re-entry transitional housing in Franklin County.
           </p>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '2rem' }}>
-            Each new station is charter-registered, QR-enabled, and tracked in our Dataverse system. Impact data feeds directly into our board governance dashboard and grant reporting.
+            Each new station will be charter-registered, connected to Story Hour access where appropriate, and tracked with responsible records so the Foundation can steward books, volunteers, community requests, and impact reporting.
           </p>
           <Link href="/volunteer" style={{ display: 'inline-block', backgroundColor: 'var(--primary)', color: '#FFFFFF', textDecoration: 'none', padding: '0.875rem 2rem', borderRadius: '100px', fontSize: '0.95rem', fontWeight: 500 }}>
-            Request a Station for Your Community
+            Start a Station Request
           </Link>
         </div>
       </section>

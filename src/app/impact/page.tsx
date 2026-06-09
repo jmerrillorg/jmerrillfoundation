@@ -18,7 +18,7 @@ const milestones = [
   {
     year: '2024',
     title: 'Literacy Bridge — ESL Classes Launched',
-    description: 'We offered English as a Second Language instruction virtually via Microsoft Teams, serving adult learners across the Columbus metro area. The program is being reactivated in 2025 with expanded capacity.',
+    description: 'We offered English as a Second Language instruction virtually, serving adult learners across the Columbus metro area. The program is being relaunched in 2026 with expanded capacity.',
     tag: 'Education',
     tagColor: '#1A5276',
     tagBg: '#D6EAF8',
@@ -239,7 +239,7 @@ export default function ImpactPage() {
             What's Next
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '580px', margin: '0 auto 2.5rem', lineHeight: 1.7 }}>
-            The Foundation is relaunching in 2026 with the Story Hour Library, expanded Classroom Author Project school partnerships, and a 150-family Thanksgiving goal. Every program is powered by our enterprise Microsoft technology stack.
+            The Foundation is active again in 2026 with Story Hour in development, expanded Classroom Author Project school partnerships, and a 150-family Thanksgiving goal. For children, families, schools, neighborhoods, donors, and volunteers, the next chapter is about more access, clearer pathways to participate, and responsible reporting on the work.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
             <Link href="/programs" style={{

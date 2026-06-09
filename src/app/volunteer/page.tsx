@@ -16,8 +16,8 @@ const opportunities = [
   {
     icon: '🍽',
     title: 'Community Table',
-    description: 'Help us serve Thanksgiving meals to Columbus families. Our 2025 goal is 150 families. We need help with food prep, distribution, and logistics.',
-    commitment: '1 day, November 2025',
+    description: 'Help us serve Thanksgiving meals to Columbus families. Our 2026 goal is 150 families. We need help with food prep, distribution, and logistics.',
+    commitment: '1 day, November 2026',
     tag: 'In-Person',
   },
   {
@@ -37,7 +37,7 @@ const opportunities = [
   {
     icon: '🌐',
     title: 'ESL Instructor',
-    description: 'Teach English as a Second Language via Microsoft Teams. We are reactivating Literacy Bridge in 2025 and need a certified or experienced ESL instructor.',
+    description: 'Teach English as a Second Language virtually. We are relaunching Literacy Bridge in 2026 and need a certified or experienced ESL instructor.',
     commitment: '2–4 hours per week',
     tag: 'Remote',
   },
@@ -138,7 +138,7 @@ export default function VolunteerPage() {
               Ready to Get Started?
             </h2>
             <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: 1.6 }}>
-              Fill out our constituent intake form. Tell us who you are, how you heard about us, and what role interests you. We will follow up within 2–3 business days.
+              Start with the Foundation interest form. It helps us route volunteer interest, board interest, school partnership inquiries, Story Hour reader interest, Reading Station requests, youth author or classroom author inquiries, ESL support interest, donor questions, and general Foundation inquiries to the right next step.
             </p>
 
             {/* Microsoft Forms Embed */}

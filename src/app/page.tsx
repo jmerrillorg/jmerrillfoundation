@@ -25,10 +25,10 @@ const programs = [
   },
   {
     title: 'Story Hour Library',
-    tag: 'Launching',
+    tag: 'In Development',
     tagColor: '#5C2D91',
     tagBg: '#E8D5F5',
-    description: 'A free digital reading library where volunteers read children\'s books on screen. Children access the library anytime. Every title links to a physical book purchase. Community voices, reading to community children.',
+    description: 'A free digital reading library in development for 2026 where volunteers read children\'s books on screen. Children will be able to access the library anytime. Community voices, reading to community children.',
     icon: '📖',
     href: '/story-hour',
   },
@@ -52,10 +52,10 @@ const programs = [
   },
   {
     title: 'Literacy Bridge',
-    tag: 'Reactivating',
+    tag: 'Relaunching',
     tagColor: '#1A5276',
     tagBg: '#D6EAF8',
-    description: 'ESL instruction delivered virtually via Microsoft Teams. We offered classes in 2024. Literacy Bridge is being reactivated in 2025 with a dedicated instructor and a weekly schedule.',
+    description: 'ESL instruction offered virtually for adult learners. We offered classes in 2024, and Literacy Bridge is being relaunched in 2026 with a dedicated instructor and a weekly schedule.',
     icon: '🌐',
     href: '/programs#literacy-bridge',
   },
@@ -64,7 +64,7 @@ const programs = [
     tag: 'Coming 2026',
     tagColor: '#5C4A65',
     tagBg: '#F3EBF5',
-    description: 'Microsoft-powered digital literacy workshops for community members who need foundational technology skills. Computer basics, Microsoft Office, job readiness — powered by our enterprise nonprofit technology stack.',
+    description: 'Digital literacy workshops for community members who need confidence with everyday tools, job readiness, online access, and practical technology skills.',
     icon: '💻',
     href: '/programs#digiready',
   },
@@ -299,7 +299,7 @@ export default function HomePage() {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', alignItems: 'center' }}>
             <div>
-              <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: '0.75rem', fontWeight: 500 }}>Physical Community Infrastructure</p>
+              <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: '0.75rem', fontWeight: 500 }}>Free Books in the Neighborhood</p>
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 500, color: 'var(--dark)', lineHeight: 1.2, marginBottom: '1rem' }}>
                 The Parsons Avenue Reading Station
               </h2>
@@ -350,7 +350,7 @@ export default function HomePage() {
             <br /><em style={{ color: 'var(--primary)' }}>We Are Looking for You.</em>
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '580px', margin: '0 auto 2.5rem', lineHeight: 1.7 }}>
-            J Merrill Foundation is relaunching with a clear mission, a live technology stack, and real programs that have already changed lives. We need board members who believe literacy is infrastructure.
+            J Merrill Foundation is active again with a clear mission, responsible systems for coordinating the work, and real programs that have already changed lives. We need board members who believe literacy is infrastructure.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
             <Link href="/board" style={{
@@ -387,10 +387,10 @@ export default function HomePage() {
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
           <div>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', color: '#FFFFFF', fontWeight: 500, marginBottom: '0.4rem' }}>
-              Every dollar funds a reader.
+              Help fund the next reader.
             </h3>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem' }}>
-              Support the Parsons Avenue Reading Station, Story Hour Library, and the Classroom Author Project.
+              Your gift helps fund books, literacy access, community programs, and responsible program operations.
             </p>
           </div>
           <Link href="/donate" style={{

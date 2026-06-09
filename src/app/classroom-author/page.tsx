@@ -111,7 +111,7 @@ export default function ClassroomAuthorPage() {
               { step: '02', title: 'Writing Residency', description: 'Foundation mentors lead students through story structure, drafting, editing, and revision over multiple weeks.' },
               { step: '03', title: 'Editorial Review', description: 'Manuscripts go through a professional editorial process — the same process every J Merrill author experiences.' },
               { step: '04', title: 'Published & Printed', description: 'The book is printed by J Merrill Publishing. Students hold a physical copy of their work in their hands.' },
-              { step: '05', title: 'On Sale', description: 'The anthology is listed on jmerrill.pub and sold publicly. Proceeds are split between the Foundation and the student authors.' },
+              { step: '05', title: 'Shared With the Community', description: 'Publication and distribution details are confirmed with each participating school so students and families understand how the finished book will be shared.' },
             ].map(s => (
               <div key={s.step} style={{ backgroundColor: '#FAFAFA', border: '1px solid rgba(147, 50, 158, 0.08)', borderRadius: '14px', padding: '1.75rem' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--primary)', marginBottom: '0.75rem', fontWeight: 500 }}>{s.step}</div>
@@ -127,13 +127,13 @@ export default function ClassroomAuthorPage() {
       <section style={{ padding: '5rem 0', backgroundColor: 'var(--surface)' }}>
         <div className="container" style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 500, color: 'var(--dark)', marginBottom: '1rem' }}>
-            Youth Author Pipeline
+            Youth Author Opportunities
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '1rem' }}>
-            Not in a partner school? Students ages 8–18 can apply to the Youth Author Pipeline individually. Each year we publish an annual anthology featuring selected submissions from the pipeline — and the top manuscript receives a full J Merrill Publishing review.
+            Not in a partner school? The Foundation is planning youth author opportunities for students who want to grow as writers outside a classroom partnership. Program details are confirmed before each opportunity opens.
           </p>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '2rem' }}>
-            Applications for the inaugural 2025 Youth Anthology open soon.
+            Future opportunities will be announced as program details are finalized.
           </p>
           <Link href="/volunteer" style={{ display: 'inline-block', backgroundColor: 'var(--primary)', color: '#FFFFFF', textDecoration: 'none', padding: '0.875rem 2rem', borderRadius: '100px', fontSize: '0.95rem', fontWeight: 500 }}>
             Express Interest
@@ -148,10 +148,10 @@ export default function ClassroomAuthorPage() {
             Bring the Program to Your School
           </h2>
           <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.65)', maxWidth: '540px', margin: '0 auto 2.5rem', lineHeight: 1.7 }}>
-            We partner with educators, school administrators, and community organizations to design a writing residency that fits your students and your schedule. The only requirement: a classroom ready to become published authors.
+            We partner with educators, school administrators, and community organizations to design a writing residency that fits your students and your schedule. School partnership inquiries can begin through the shared Foundation interest form.
           </p>
           <Link href="/volunteer" style={{ display: 'inline-block', backgroundColor: 'var(--primary)', color: '#FFFFFF', textDecoration: 'none', padding: '1rem 2.5rem', borderRadius: '100px', fontSize: '1rem', fontWeight: 500 }}>
-            Submit a School Partnership Inquiry
+            Start a School Partnership Inquiry
           </Link>
         </div>
       </section>

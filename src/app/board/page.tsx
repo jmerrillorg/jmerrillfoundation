@@ -33,8 +33,8 @@ const seats = [
   },
   {
     title: 'Technology Seat',
-    description: 'IT professional or technologist with nonprofit or enterprise technology experience. Ideal candidate has Microsoft 365 or Power Platform familiarity.',
-    skills: ['Technology leadership', 'Microsoft stack', 'Digital literacy'],
+    description: 'IT professional or technologist who can help the Foundation use practical tools for reliable records, program visibility, and responsible reporting.',
+    skills: ['Technology leadership', 'Program systems', 'Digital literacy'],
     priority: 'Priority',
   },
   {
@@ -45,7 +45,7 @@ const seats = [
   },
   {
     title: 'Faith Community Liaison',
-    description: 'A representative from Agape International Cathedral or the broader faith community, helping bridge our AIC partnership and volunteer pipeline.',
+    description: 'A representative from Agape International Cathedral or the broader faith community, helping strengthen trusted relationships and volunteer connection.',
     skills: ['Faith community connection', 'Volunteer coordination', 'Community trust'],
     priority: 'Open',
   },
@@ -71,7 +71,7 @@ export default function BoardPage() {
             <em style={{ color: 'var(--secondary)' }}>That Believes Literacy Is Infrastructure.</em>
           </h1>
           <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.65)', maxWidth: '580px', lineHeight: 1.7 }}>
-            J Merrill Foundation is relaunching with a live technology platform, real programs with proven results, and a mission that connects publishing, faith, financial empowerment, and community service. We need board members who want to govern something that matters.
+            J Merrill Foundation is active again with real programs, responsible stewardship systems, and a mission that connects authorship, access, financial confidence, faith-community relationships, and service. Board decisions ultimately serve children, families, adult learners, neighborhoods, and community partners.
           </p>
         </div>
       </section>
@@ -84,7 +84,7 @@ export default function BoardPage() {
               {
                 icon: '🏛',
                 title: 'Real Infrastructure',
-                description: 'The Foundation operates on a Microsoft 365 enterprise stack — the same technology powering J Merrill One. Board members have access to real governance dashboards, program data, and impact metrics.',
+                description: 'The Foundation uses reliable tools for records, program visibility, responsible reporting, and impact accountability. Board members help steward both the mission and the systems that keep the work trustworthy.',
               },
               {
                 icon: '📖',
