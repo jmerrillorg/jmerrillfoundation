@@ -68,7 +68,7 @@ export default function ShareYourExperiencePage() {
               Choose the feedback path that fits your relationship with the Foundation.
             </h2>
             <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.8 }}>
-              The first Customer Voice survey is the broadest and lowest-risk path: program and volunteer experience feedback. Donor, participant, and sponsor feedback are separated so private details are not mixed into a single general survey.
+              The first feedback path is the broadest and lowest-risk path: program and volunteer experience feedback. Donor, participant, and sponsor feedback are separated so private details are not mixed into a single general survey.
             </p>
           </div>
 
