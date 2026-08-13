@@ -1,7 +1,7 @@
 {
   "package_id": "CV-01A",
   "repository": "J Merrill Foundation",
-  "status": "IMPLEMENTED - WEBSITE ENTRY READY / CUSTOMER VOICE URLS CONFIGURATION HELD",
+  "status": "FOUNDATION FEEDBACK = LIVE",
   "generated_at": "2026-08-13T00:00:00.000Z",
   "implemented_files": [
     {
@@ -10,7 +10,7 @@
     },
     {
       "path": "src/components/Navigation.tsx",
-      "purpose": "Adds Feedback navigation link to /share-your-experience."
+      "purpose": "Confirms Feedback is not present in primary navigation."
     },
     {
       "path": "src/components/Footer.tsx",
@@ -37,12 +37,30 @@
   ],
   "lowest_risk_first_survey": {
     "audience": "Program or Volunteer Experience",
+    "published_url": "https://nam.dcv.ms/fS2PAlt6O9",
     "reason": "It captures broad operational learning after programs, events, and volunteer work while avoiding donor payment records and recipient-sensitive assistance details."
   },
+  "production_deployment": {
+    "repository_commit": "338beb1afcac9c9b4d206629eb5a18a7a41169f6",
+    "github_actions_run": "31665462102",
+    "workflow": "Deploy jmerrill.foundation",
+    "result": "success",
+    "static_web_app": "foundation-main",
+    "resource_group": "jm1-core-services",
+    "live_domain": "https://jmerrill.foundation/",
+    "live_entry_point": "https://jmerrill.foundation/share-your-experience/"
+  },
+  "production_validation": {
+    "footer_link": "Share Your Experience appears in the live jmerrill.foundation footer.",
+    "primary_navigation": "Feedback is not present in primary navigation.",
+    "phase_1_public_link": "The Program or Volunteer Experience card links to the live Customer Voice survey.",
+    "controlled_response": "Submitted controlled production response with 5-star rating and launch-validation text.",
+    "customer_voice_report": "Customer Voice report shows Total responses 1, 5.0 average rating, and the controlled test response text.",
+    "dataverse_note": "Customer Voice was created in JM1-CRM-Core. Direct Dataverse metadata queries did not expose response/survey logical tables by expected names, so Customer Voice reporting is the confirmed response proof for v1 closeout."
+  },
   "not_performed": [
-    "No Customer Voice survey was published from this repository.",
-    "No Dataverse response capture was modified.",
+    "Donor, participant, and sponsor surveys were not launched in v1 because Program/Volunteer is the approved lowest-risk public launch path.",
     "No donor, participant, sponsor, or volunteer production records were changed."
   ],
-  "final_recommendation": "Publish the Phase 1 Customer Voice survey, set NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PROGRAM_URL in Azure Static Web Apps, validate response capture, then activate donor, participant, and sponsor surveys only after their separate privacy validation passes."
+  "final_recommendation": "FOUNDATION FEEDBACK = LIVE. Keep Program/Volunteer live as v1, monitor controlled and organic responses, then activate donor, participant, and sponsor surveys only after their separate privacy validation passes."
 }
