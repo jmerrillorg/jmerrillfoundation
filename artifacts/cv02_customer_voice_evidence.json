@@ -1,0 +1,22 @@
+{
+  "status": "PENDING DEPLOYMENT VALIDATION",
+  "updated_at": "2026-08-13T04:15:10.581Z",
+  "repository": "foundation",
+  "environment": "JM1-Core",
+  "environment_url": "https://jm1hq.crm.dynamics.com/",
+  "project_id": "87409139-b99d-4d2a-a40c-de4ca108faaf",
+  "project_name": "J Merrill Foundation — Program & Volunteer Experience",
+  "survey_id": "0ae75320-cc96-f111-8076-7c1e525b15c2",
+  "survey_name": "J Merrill Foundation — Share Your Experience",
+  "public_url": "https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=XgctNReOaUGfjiLmlGzmbWLYUJckILxClwf4SzJd-xlUMUJOS0NSTVk2WjdVT0ZIRkhCMzdJUE9HRi4u",
+  "controlled_response_ids": [
+    "e26fbced-cc96-f111-8076-000d3a14673b"
+  ],
+  "question_response_counts": [
+    9
+  ],
+  "anonymous_response_behavior": "PASS - no required identity and no controlled-marker Contact created.",
+  "testimonial_permission": "Follow-up permission only.",
+  "service_recovery_boundary": "Human review before consequential follow-up.",
+  "privacy_result": "PASS"
+}

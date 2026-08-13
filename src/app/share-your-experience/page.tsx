@@ -10,7 +10,7 @@ const surveys = [
     audience: 'Program or Volunteer Experience',
     phase: 'Phase 1',
     status: 'Open first',
-    url: process.env.NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PROGRAM_URL || 'https://nam.dcv.ms/fS2PAlt6O9',
+    url: process.env.NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PROGRAM_URL || 'https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=XgctNReOaUGfjiLmlGzmbWLYUJckILxClwf4SzJd-xlUMUJOS0NSTVk2WjdVT0ZIRkhCMzdJUE9HRi4u',
     description: 'For people who joined a Foundation program, volunteered at an event, supported Story Hour, helped with a Reading Station, or worked with Community Table.',
     privacy: 'Do not include medical, financial, or other sensitive personal details.',
   },
