@@ -1,0 +1,41 @@
+{
+  "package_id": "CV-01A",
+  "status": "PASS WITH CUSTOMER VOICE TENANT CONFIGURATION HOLD",
+  "generated_at": "2026-08-13T00:00:00.000Z",
+  "validation_results": [
+    {
+      "audience": "Program or Volunteer Experience",
+      "result": "PASS",
+      "evidence": "Dedicated phase 1 card exists on /share-your-experience and is the first, emphasized feedback path.",
+      "privacy_boundary": "Sensitive personal, medical, financial, eligibility, and assistance details are excluded from the public feedback instruction.",
+      "crm_boundary": "Feedback does not create Lead, Opportunity, or Case by default."
+    },
+    {
+      "audience": "Donor Experience",
+      "result": "PASS",
+      "evidence": "Donor survey path is separate from program, participant, and sponsor feedback.",
+      "privacy_boundary": "Receipt/payment details are kept out of public feedback text and remain tied to secure payment/Foundation contact channels.",
+      "crm_boundary": "Donor feedback does not make the donor a Lead or create Opportunity by default."
+    },
+    {
+      "audience": "Participant Experience",
+      "result": "PASS",
+      "evidence": "Participant survey path is separate and explicitly not donor-facing.",
+      "privacy_boundary": "Participant feedback is reviewed separately to protect dignity and program privacy.",
+      "crm_boundary": "Participant feedback does not create Opportunity and requires restricted data handling."
+    },
+    {
+      "audience": "Sponsor or Partner Experience",
+      "result": "PASS",
+      "evidence": "Sponsor/partner survey path is separate from donor and participant feedback.",
+      "privacy_boundary": "Partnership/funding context stays attached to sponsor or partner relationship ownership.",
+      "crm_boundary": "Sponsor feedback may inform relationship follow-up but does not become generic donation handling."
+    }
+  ],
+  "blocked_live_proofs": [
+    "Customer Voice project creation",
+    "Customer Voice survey publication",
+    "Dataverse response capture proof",
+    "Azure Static Web App production environment variable configuration"
+  ]
+}

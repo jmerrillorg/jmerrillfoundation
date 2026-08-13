@@ -1,0 +1,64 @@
+{
+  "package_id": "CV-01A",
+  "repository": "J Merrill Foundation",
+  "status": "IMPLEMENTED WITH CUSTOMER VOICE URL CONFIGURATION HOLD",
+  "generated_at": "2026-08-13T00:00:00.000Z",
+  "scope": [
+    "phased donor, volunteer, participant, and sponsor Customer Voice surveys",
+    "lowest-risk/highest-value first survey",
+    "website feedback entry point using Share Your Experience",
+    "audience-specific privacy boundaries",
+    "separate audience validation"
+  ],
+  "foundation_canon_alignment": {
+    "source": "FND-01 Foundation Microsoft Optimization",
+    "customer_voice_fit": "AVAILABLE - ADMIN CONFIGURATION REQUIRED",
+    "rule": "Use Customer Voice for feedback; do not build custom survey infrastructure.",
+    "privacy_rule": "Donor, volunteer, participant/recipient, and sponsor feedback must remain separately classified."
+  },
+  "phases": [
+    {
+      "phase": 1,
+      "audience": "Program or Volunteer Experience",
+      "classification": "START FIRST - LOWEST RISK / HIGHEST VALUE",
+      "website_env_var": "NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PROGRAM_URL",
+      "primary_use": "post-program, post-event, volunteer coordination, Story Hour, Reading Station, Community Table feedback",
+      "privacy_boundary": "No medical, financial, eligibility, or sensitive assistance details in public feedback text.",
+      "validation_gate": "Feedback must map to program/volunteer relationship context without creating Lead, Opportunity, or Case by default."
+    },
+    {
+      "phase": 2,
+      "audience": "Donor Experience",
+      "classification": "PREPARED - ACTIVATE AFTER CUSTOMER VOICE ADMIN PROOF",
+      "website_env_var": "NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_DONOR_URL",
+      "primary_use": "giving experience, acknowledgment, donor stewardship, donor communication",
+      "privacy_boundary": "Donation receipt, payment, and ledger issues remain in payment/finance or direct Foundation support channels.",
+      "validation_gate": "Donor feedback must not expose participant-sensitive data or create Sales Lead/Opportunity by default."
+    },
+    {
+      "phase": 3,
+      "audience": "Participant Experience",
+      "classification": "PREPARED - ACTIVATE AFTER PRIVACY REVIEW",
+      "website_env_var": "NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PARTICIPANT_URL",
+      "primary_use": "recipient, learner, student, family, and program participant feedback",
+      "privacy_boundary": "Participant feedback is not donor-facing CRM data and requires restricted access review before Dataverse exposure.",
+      "validation_gate": "Participant feedback must not be visible in donor/sponsor views and must not create Opportunity."
+    },
+    {
+      "phase": 4,
+      "audience": "Sponsor or Partner Experience",
+      "classification": "PREPARED - ACTIVATE AFTER SPONSOR/PARTNER REVIEW",
+      "website_env_var": "NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_SPONSOR_URL",
+      "primary_use": "sponsor, funder, school, church, community organization, and operating partner feedback",
+      "privacy_boundary": "Funding and partnership feedback links to sponsor/partner context; sensitive participant detail remains excluded.",
+      "validation_gate": "Sponsor feedback may inform relationship follow-up but must not become routine donation handling or generic Sales activity."
+    }
+  ],
+  "deployment_model": {
+    "site_entry_point": "/share-your-experience",
+    "navigation_label": "Feedback",
+    "footer_label": "Share Your Experience",
+    "configuration_method": "Azure Static Web App environment variables for published Customer Voice URLs",
+    "fallback": "Foundation email path remains available until Customer Voice survey URLs are configured."
+  }
+}

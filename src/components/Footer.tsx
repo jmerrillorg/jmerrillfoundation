@@ -50,6 +50,7 @@ export default function Footer() {
             {[
               { href: '/about', label: 'About the Foundation' },
               { href: '/impact', label: 'Our Impact' },
+              { href: '/share-your-experience', label: 'Share Your Experience' },
               { href: '/board', label: 'Join the Board' },
               { href: '/volunteer', label: 'Volunteer' },
               { href: '/donate', label: 'Donate' },

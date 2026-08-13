@@ -1,0 +1,48 @@
+{
+  "package_id": "CV-01A",
+  "repository": "J Merrill Foundation",
+  "status": "IMPLEMENTED - WEBSITE ENTRY READY / CUSTOMER VOICE URLS CONFIGURATION HELD",
+  "generated_at": "2026-08-13T00:00:00.000Z",
+  "implemented_files": [
+    {
+      "path": "src/app/share-your-experience/page.tsx",
+      "purpose": "New Foundation feedback entry point with phased Customer Voice audience paths."
+    },
+    {
+      "path": "src/components/Navigation.tsx",
+      "purpose": "Adds Feedback navigation link to /share-your-experience."
+    },
+    {
+      "path": "src/components/Footer.tsx",
+      "purpose": "Adds Share Your Experience organization footer link."
+    },
+    {
+      "path": "README.md",
+      "purpose": "Documents the route and Customer Voice environment variable configuration."
+    },
+    {
+      "path": "artifacts/cv01a_customer_voice_feedback_plan.json",
+      "purpose": "Defines phased survey plan and privacy boundaries."
+    },
+    {
+      "path": "artifacts/cv01a_audience_validation.json",
+      "purpose": "Validates donor, volunteer/program, participant, and sponsor audiences separately."
+    }
+  ],
+  "customer_voice_environment_variables": [
+    "NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PROGRAM_URL",
+    "NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_DONOR_URL",
+    "NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PARTICIPANT_URL",
+    "NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_SPONSOR_URL"
+  ],
+  "lowest_risk_first_survey": {
+    "audience": "Program or Volunteer Experience",
+    "reason": "It captures broad operational learning after programs, events, and volunteer work while avoiding donor payment records and recipient-sensitive assistance details."
+  },
+  "not_performed": [
+    "No Customer Voice survey was published from this repository.",
+    "No Dataverse response capture was modified.",
+    "No donor, participant, sponsor, or volunteer production records were changed."
+  ],
+  "final_recommendation": "Publish the Phase 1 Customer Voice survey, set NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PROGRAM_URL in Azure Static Web Apps, validate response capture, then activate donor, participant, and sponsor surveys only after their separate privacy validation passes."
+}

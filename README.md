@@ -19,6 +19,7 @@ src/app/
 ├── impact/page.tsx       → /impact
 ├── board/page.tsx        → /board
 ├── volunteer/page.tsx    → /volunteer (embeds MS Forms intake)
+├── share-your-experience/page.tsx → /share-your-experience (Customer Voice feedback entry)
 ├── donate/page.tsx       → /donate (Stripe placeholder)
 ├── story-hour/page.tsx   → /story-hour
 ├── classroom-author/page.tsx → /classroom-author
@@ -96,6 +97,19 @@ When Stripe is ready:
 3. Add `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` to Azure Static Web App environment variables
 4. Wire Stripe webhook → Power Automate → `jm1fnd_donation` Dataverse table
 
+### Step 8 — Customer Voice Feedback URLs
+
+The `/share-your-experience` page supports phased Customer Voice survey links. Add these Azure Static Web App environment variables as each Customer Voice survey is approved and published:
+
+```bash
+NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PROGRAM_URL
+NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_DONOR_URL
+NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PARTICIPANT_URL
+NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_SPONSOR_URL
+```
+
+Phase 1 starts with program or volunteer experience feedback because it is the lowest-risk/highest-value Foundation feedback path. Donor, participant, and sponsor surveys remain separate to preserve Foundation privacy boundaries.
+
 ---
 
 ## Design System
@@ -127,6 +141,7 @@ When Stripe is ready:
 | /impact | Proof points | Stats banner, Chillicothe feature, full program history timeline |
 | /board | Board recruitment | 7 open seats with priority tags, why join, application CTA |
 | /volunteer | Get involved | 6 opportunity cards + embedded MS Forms intake |
+| /share-your-experience | Feedback | Phased Customer Voice entry point for program/volunteer, donor, participant, and sponsor feedback |
 | /donate | Giving | Stripe placeholder, where it goes breakdown, 4 named giving tiers |
 | /story-hour | Digital library | How it works, QR bridge, copyright tiers, reader CTA |
 | /classroom-author | Signature program | Chillicothe proof, 5-step process, planned youth author opportunities, school partnership CTA |
