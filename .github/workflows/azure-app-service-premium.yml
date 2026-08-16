@@ -76,7 +76,7 @@ jobs:
           az webapp config appsettings set --resource-group "$AZURE_RESOURCE_GROUP" --name "$AZURE_WEBAPP_NAME" --settings JM1_RELEASE_SHA="${{ github.sha }}" SCM_DO_BUILD_DURING_DEPLOYMENT=false ENABLE_ORYX_BUILD=false WEBSITE_RUN_FROM_PACKAGE=1 WEBSITE_SKIP_NODE_MODULES_TAR=1 WEBSITE_WARMUP_PATH=/api/health WEBSITE_WARMUP_STATUSES=200 --output none
 
       - name: Deploy artifact
-        run: az webapp deploy --resource-group "$AZURE_RESOURCE_GROUP" --name "$AZURE_WEBAPP_NAME" --src-path "$APP_SERVICE_PACKAGE" --type zip --clean true
+        run: az webapp deploy --resource-group "$AZURE_RESOURCE_GROUP" --name "$AZURE_WEBAPP_NAME" --src-path "$APP_SERVICE_PACKAGE" --type zip --clean true --track-status false --timeout 600000
 
       - name: Health probe
         run: |
