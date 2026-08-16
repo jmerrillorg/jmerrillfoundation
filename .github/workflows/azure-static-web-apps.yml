@@ -1,19 +1,18 @@
 name: Deploy jmerrill.foundation
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      rollback_reason:
+        description: "Rollback-only reason for superseded Foundation SWA deployment"
+        required: true
+        type: string
 
 jobs:
   build_and_deploy:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    name: Build and Deploy
+    name: Rollback-Only SWA Deploy
 
     steps:
       - uses: actions/checkout@v3
@@ -32,10 +31,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Next.js site
+      - name: Build Next.js rollback site
         run: pnpm build
 
-      - name: Deploy to Azure Static Web Apps
+      - name: Deploy rollback to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
@@ -45,15 +44,3 @@ jobs:
           api_location: ''
           output_location: ''
           skip_app_build: true
-
-  close_pull_request:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request
-
-    steps:
-      - name: Close Pull Request
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          action: 'close'

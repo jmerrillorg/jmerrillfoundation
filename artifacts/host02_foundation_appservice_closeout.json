@@ -1,0 +1,74 @@
+{
+  "package": "HOST-02",
+  "target_repository": "J Merrill Foundation",
+  "recorded_at_utc": "2026-08-15T13:40:00Z",
+  "final_classification": "J MERRILL FOUNDATION = APP SERVICE — LIVE — VALIDATED",
+  "host02_migration_progress": "4 OF 6",
+  "frontend": "app-jm1-foundation-prod",
+  "public_domains": [
+    "https://jmerrill.foundation/",
+    "https://www.jmerrill.foundation/"
+  ],
+  "deployment": {
+    "next_output": "standalone",
+    "artifact": "dist/jmerrill-foundation-appservice.zip",
+    "runtime": "NODE|22-lts",
+    "startup_command": "node server.js",
+    "health_check": "/api/health",
+    "kudu_deployment_id": "64e7cefa-2d24-4fb6-9da0-e5aedd39111d",
+    "kudu_result": "Deployment successful"
+  },
+  "default_host_validation": {
+    "route_matrix": {
+      "/api/health": 200,
+      "/": 200,
+      "/programs": 200,
+      "/volunteer": 200,
+      "/donate": 200,
+      "/share-your-experience": 200
+    },
+    "consecutive_passes": 8,
+    "result": "PASS"
+  },
+  "production_validation": {
+    "route_matrix": {
+      "/": "200 ssl_verify_result=0",
+      "/programs": "200 ssl_verify_result=0",
+      "/volunteer": "200 ssl_verify_result=0",
+      "/donate": "200 ssl_verify_result=0",
+      "/share-your-experience": "200 ssl_verify_result=0",
+      "https://www.jmerrill.foundation/": "200 ssl_verify_result=0"
+    },
+    "tls": "PASS",
+    "dns": {
+      "apex_a": "13.89.172.3",
+      "www_cname": "app-jm1-foundation-prod.azurewebsites.net"
+    },
+    "result": "PASS"
+  },
+  "customer_voice": {
+    "route": "/share-your-experience",
+    "program_volunteer_survey_url": "https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=XgctNReOaUGfjiLmlGzmbWLYUJckILxClwf4SzJd-xlUMUJOS0NSTVk2WjdVT0ZIRkhCMzdJUE9HRi4u",
+    "survey_status": 200,
+    "primary_nav_feedback": "ABSENT",
+    "footer_share_your_experience": "PRESENT",
+    "result": "PASS"
+  },
+  "swa_freeze": {
+    "swa_resource": "foundation-main",
+    "resource_group": "jm1-core-services",
+    "state": "SUPERSEDED — ROLLBACK ONLY",
+    "workflow_file": ".github/workflows/azure-static-web-apps.yml",
+    "workflow_change": "push and pull_request triggers replaced with manual workflow_dispatch rollback-only trigger",
+    "deleted": false
+  },
+  "telemetry": {
+    "latest_http_5xx_bucket": 0,
+    "latest_average_response_time_seconds": 0.8637777777777779,
+    "latest_plan_cpu_average": 58.9,
+    "latest_plan_memory_average": 88.9,
+    "capacity_classification": "ACCEPTABLE — MONITOR"
+  },
+  "remaining_foundation_blockers": [],
+  "next_target": "J Merrill Productions"
+}

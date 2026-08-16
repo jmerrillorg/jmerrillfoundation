@@ -2,9 +2,14 @@
   "name": "jmerrill-foundation",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=24 <25",
+    "npm": ">=11 <12"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "package:appservice": "node scripts/package-appservice.mjs",
     "start": "next start",
     "lint": "next lint"
   },
