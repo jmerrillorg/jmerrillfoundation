@@ -29,7 +29,7 @@ env:
   NODE_VERSION: "24"
   AZURE_RESOURCE_GROUP: rg-jm1-web-prod-premium
   AZURE_WEBAPP_NAME: app-jm1-foundation-prod-v2
-  APP_SERVICE_PACKAGE: jmerrill-foundation-appservice-${{ github.sha }}.zip
+  APP_SERVICE_PACKAGE: dist/jmerrill-foundation-appservice.zip
   PRODUCTION_HEALTH_URL: https://jmerrill.foundation/api/health
 
 jobs:
