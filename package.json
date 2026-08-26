@@ -10,6 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "package:appservice": "node scripts/package-appservice.mjs",
+    "test:human-first": "node scripts/human_first_why_first_tests.mjs",
     "start": "next start",
     "lint": "next lint"
   },
