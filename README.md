@@ -1,173 +1,92 @@
-# jmerrill.org — Site Deployment Guide
+# jmerrill.foundation — Production Authority
 
 **Project:** J Merrill Foundation Inc. Website
-**Canonical Domain:** www.jmerrill.org
-**Secondary Domain:** jmerrill.foundation may remain redirected or secondary
-**Stack:** Next.js 14 App Router · TypeScript · Tailwind CSS
-**Hosting:** Azure Static Web Apps (JM1 Foundation Azure credit)
-**Repository:** github.com/jmerrillorg/jmerrill-foundation
+**Canonical public experience:** https://jmerrill.foundation
+**Alternate nonprofit domain:** https://jmerrill.org
+**Alternate-domain purpose:** intentional nonprofit-domain presence and defensive brand ownership
+**Expected alternate behavior:** `jmerrill.org` resolves or redirects to the canonical Foundation experience
+**Production host:** Azure App Service `app-jm1-foundation-prod-v2`
+**Runtime:** Node 24 LTS · Next.js 16 · React 19
+**Deployment authority:** GitHub Actions OIDC → Azure App Service production environment
+**Repository:** github.com/jmerrillorg/jmerrillfoundation
 
----
+This repository owns the Foundation public website application source, route implementation, static assets, and app-specific deployment workflow. Enterprise Microsoft platform authority remains outside this repository.
 
-## Site Structure
+`jmerrill.org` is not stale, retired, or an authority conflict. Application metadata should identify `jmerrill.foundation` as the canonical public experience, while `jmerrill.org` remains a legitimate Foundation-owned alternate nonprofit domain.
 
-```
-src/app/
-├── page.tsx              → / (Homepage)
-├── about/page.tsx        → /about
-├── programs/page.tsx     → /programs
-├── impact/page.tsx       → /impact
-├── board/page.tsx        → /board
-├── volunteer/page.tsx    → /volunteer (embeds MS Forms intake)
-├── share-your-experience/page.tsx → /share-your-experience (Customer Voice feedback entry)
-├── donate/page.tsx       → /donate (Stripe placeholder)
-├── story-hour/page.tsx   → /story-hour
-├── classroom-author/page.tsx → /classroom-author
-├── our-libraries/page.tsx    → /our-libraries
-└── layout.tsx            → Root layout (Navigation + Footer)
+## Current Public Routes
 
-src/components/
-├── Navigation.tsx        → Fixed nav, scroll-aware, mobile hamburger
-└── Footer.tsx            → Full footer with links and contact
-```
+| Route | Purpose |
+|---|---|
+| `/` | Foundation homepage |
+| `/about` | Foundation story and mission context |
+| `/programs` | Program hub |
+| `/impact` | Public impact narrative |
+| `/board` | Board recruitment |
+| `/volunteer` | Microsoft Forms volunteer and constituent interest entry |
+| `/share-your-experience` | Customer Voice feedback entry |
+| `/donate` | Public donation information and external payment link |
+| `/story-hour` | Story Hour program page |
+| `/classroom-author` | Classroom Author Project page |
+| `/our-libraries` | Reading Stations page |
+| `/api/health` | Safe production readback |
 
----
+## Local Development
 
-## Deployment Steps
-
-### Step 1 — Clone and Install
+Use Node 24. The repository declares the supported runtime in `package.json`.
 
 ```bash
-git clone https://github.com/jmerrillorg/jmerrill-foundation.git
-cd jmerrill-foundation
-npm install
+corepack enable
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-### Step 2 — Local Dev
+Validate before release:
 
 ```bash
-npm run dev
-# → http://localhost:3000
+pnpm exec tsc --noEmit
+pnpm lint
+pnpm test:human-first
+pnpm build
+pnpm package:appservice
 ```
 
-### Step 3 — Build Test
+## Production Deployment
 
-```bash
-npm run build
-# Produces /out directory (static export)
-```
+The canonical deployment path is `.github/workflows/azure-app-service-premium.yml`.
 
-### Step 4 — Azure Static Web Apps Setup
+Production deploys from `main` through GitHub Actions using Azure OIDC. The workflow builds the Next.js standalone output, packages it for App Service, deploys to `app-jm1-foundation-prod-v2`, and probes `https://jmerrill.foundation/api/health`.
 
-1. Go to **portal.azure.com** → Create Resource → Static Web App
-2. Name: `jmf-foundation-site`
-3. Resource Group: `rg-jm1-communications` (existing)
-4. Plan: **Free** (covered under Foundation Azure nonprofit credit)
-5. Region: **East US 2**
-6. Source: GitHub → `jmerrillorg/jmerrill-foundation` → branch: `main`
-7. Build preset: **Custom**
-8. App location: `/`
-9. Output location: `out`
-10. Click **Review + Create**
+The production health response must expose only safe readback fields:
 
-Azure will auto-generate the GitHub Actions workflow token and add it to the repo as `AZURE_STATIC_WEB_APPS_API_TOKEN`.
+- `service`
+- `environment`
+- `health`
+- `release_sha`
+- `runtime`
 
-### Step 5 — Custom Domain
+`release_sha` is populated from `JM1_RELEASE_SHA` during deployment.
 
-1. In Azure Static Web Apps → Custom domains → Add
-2. Enter: `www.jmerrill.org`
-3. Add the CNAME record to DNS at your domain registrar pointing to the Azure-provided hostname
-4. Keep `jmerrill.foundation` as a secondary redirected domain if needed
+## Customer Voice Boundary
 
-### Step 6 — Microsoft Forms Embed
+`/share-your-experience` is the Foundation-owned public entry point for feedback. Customer Voice platform configuration, response storage, Dataverse integration, access controls, privacy boundaries, and ALM are enterprise Microsoft platform responsibilities.
 
-The volunteer page already embeds the Foundation intake form via iframe:
+The Phase 1 program/volunteer survey uses `NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PROGRAM_URL` when configured. The current source includes the commissioned public fallback URL so the entry point remains available if the app setting is absent.
 
-```
-Form ID: XgctNReOaUGfjiLmlGzmbWLYUJckILxClwf4SzJd-xlUQktYVVZWRjg0SFc0RjNSWVVJOUMzNVZCNi4u
-```
+## Volunteer Intake Boundary
 
-The iframe src in `/volunteer/page.tsx` uses the ResponsePage URL. Verify the form is set to **Anyone can respond** in Forms settings.
+`/volunteer` embeds the current Microsoft Forms interest form. This remains a business-continuity path and is not migrated by this repository authority package.
 
-### Step 7 — Stripe Integration (Next Phase)
+## Donation Boundary
 
-When Stripe is ready:
-1. Install: `npm install @stripe/stripe-js @stripe/react-stripe-js`
-2. Replace the placeholder in `/donate/page.tsx` with the Stripe Payment Element
-3. Add `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` to Azure Static Web App environment variables
-4. Wire Stripe webhook → Power Automate → `jm1fnd_donation` Dataverse table
+`/donate` links to the current external secure payment portal. Direct Stripe, Business Central, Dataverse donation posting, and financial migration work are outside this repository authority package.
 
-### Step 8 — Customer Voice Feedback URLs
+## Legacy SWA Boundary
 
-The `/share-your-experience` page supports phased Customer Voice survey links. Add these Azure Static Web App environment variables as each Customer Voice survey is approved and published:
+`.github/workflows/azure-static-web-apps.yml` is rollback-only legacy infrastructure. Do not use it for normal production deployment. Static Web Apps resource/token review belongs to the enterprise `JM1-INFRA-RETIRE-001` retirement inventory.
 
-```bash
-NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PROGRAM_URL
-NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_DONOR_URL
-NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_PARTICIPANT_URL
-NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION_SPONSOR_URL
-```
+The `org-to-foundation-redirect` Static Web App is a separate intentional alternate-domain redirect resource for `jmerrill.org`; it is not a Foundation-domain retirement candidate merely because it redirects to `jmerrill.foundation`.
 
-Phase 1 starts with program or volunteer experience feedback because it is the lowest-risk/highest-value Foundation feedback path. Donor, participant, and sponsor surveys remain separate to preserve Foundation privacy boundaries.
+## Brand Notes
 
----
-
-## Design System
-
-**Fonts (Google Fonts — loaded in globals.css)**
-- Display: Cormorant Garamond (headings, pull quotes)
-- Body: DM Sans (all body copy, nav, UI)
-- Mono: DM Mono (labels, code, stats)
-
-**Foundation Brand Colors**
-```css
---primary:    #93329E   /* Foundation purple */
---secondary:  #CBAACB   /* Lavender */
---accent:     #A3C4DC   /* Soft blue */
---dark:       #1A1022   /* Near-black purple */
---surface:    #F3EBF5   /* Light lavender surface */
---gold:       #F4B400   /* Accent gold */
-```
-
----
-
-## Pages — Content Summary
-
-| Route | Purpose | Key Content |
-|---|---|---|
-| / | Homepage | Hero, impact stats, program cards, Chillicothe story, Reading Station, board CTA, donate strip |
-| /about | Foundation story | Mission statement, founding narrative, Jackie bio, board recruitment |
-| /programs | Program hub | Community Table, Literacy Bridge, DigiReady detail sections |
-| /impact | Proof points | Stats banner, Chillicothe feature, full program history timeline |
-| /board | Board recruitment | 7 open seats with priority tags, why join, application CTA |
-| /volunteer | Get involved | 6 opportunity cards + embedded MS Forms intake |
-| /share-your-experience | Feedback | Phased Customer Voice entry point for program/volunteer, donor, participant, and sponsor feedback |
-| /donate | Giving | Stripe placeholder, where it goes breakdown, 4 named giving tiers |
-| /story-hour | Digital library | How it works, QR bridge, copyright tiers, reader CTA |
-| /classroom-author | Signature program | Chillicothe proof, 5-step process, planned youth author opportunities, school partnership CTA |
-| /our-libraries | Reading Stations | Parsons Ave station details, charter info, expansion plan |
-
----
-
-## To-Do After Deployment
-
-- [ ] Replace Stripe placeholder in /donate with live Stripe Payment Element
-- [ ] Add real photography (Thanksgiving meals, Reading Station, Chillicothe project)
-- [ ] Wire /our-libraries to Azure Maps API for interactive station map
-- [ ] Add Power BI public impact dashboard embed to /impact
-- [ ] Add Story Hour video grid to /story-hour once library is built
-- [ ] Verify MS Forms iframe displays correctly in production (may need allowfullscreen)
-- [ ] Set up Google Analytics or Microsoft Clarity for traffic tracking
-- [ ] Submit sitemap.xml to Google Search Console
-- [ ] Add og:image meta images for social sharing
-
----
-
-## Canonical References
-
-- Master Plan: `JMF-MASTER-PLAN-v1.0.docx`
-- Canon Certification: `JM1-CANON-CERT-001`
-- Constituent Intake Form ID: `XgctNReOaUGfjiLmlGzmbWLYUJckILxClwf4SzJd-xlUQktYVVZWRjg0SFc0RjNSWVVJOUMzNVZCNi4u`
-- Little Free Library Charter: `#154418`
-- Reading Station Address: `3901 Parsons Ave, Columbus OH 43207`
-- Foundation Email: `foundation@jmerrill.one`
+Current visual tokens live in application CSS/source. Approved enterprise email brand-token authority is not established by this README and remains governed by `JM1-COMMS-001`.
