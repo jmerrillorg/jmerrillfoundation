@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://jmerrill.foundation'),
   title: {
     default: 'J Merrill Foundation Inc. — Literacy. Community. Transformation.',
     template: '%s | J Merrill Foundation Inc.',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.jmerrill.org',
+    url: 'https://jmerrill.foundation',
     siteName: 'J Merrill Foundation Inc.',
     title: 'J Merrill Foundation Inc. — Literacy. Community. Transformation.',
     description: 'Advancing literacy, dignity, authorship, and community access across Columbus, Ohio.',
