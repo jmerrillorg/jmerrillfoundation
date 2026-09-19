@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-09-18",
+  "repository": "jmerrillorg/jmerrillfoundation",
+  "remote": "https://github.com/jmerrillorg/jmerrillfoundation.git",
+  "default_branch": "main",
+  "remote_main_at_start": "222c2b4b5a8742c6666747412b3048abb4651baf",
+  "deployed_sha": "222c2b4b5a8742c6666747412b3048abb4651baf",
+  "canonical_production_alignment": "PASS",
+  "open_pull_requests": [],
+  "recent_merged_pull_requests": [
+    {"number": 10, "title": "Certify Foundation production authority", "merge_sha": "222c2b4b5a8742c6666747412b3048abb4651baf"},
+    {"number": 9, "title": "Upgrade technology currency to Next 16", "merge_sha": "f0656acfad1fa67d54fa13e3da132f76c89591f4"},
+    {"number": 8, "title": "JMFN: Add human-first guard validation", "merge_sha": "51707fa29a4182990dce4afcdbbfb5f0448d1d32"}
+  ],
+  "remote_branches": [
+    {"name": "main", "sha": "222c2b4b5a8742c6666747412b3048abb4651baf"},
+    {"name": "codex/tech-currency-next16", "sha": "14069e80c251a671bfc4aa2b33f63705c6468bdf"},
+    {"name": "landing", "sha": "6afaf61f262ccca70142fa177655bb83f4829359"}
+  ],
+  "deployment_authority": "GitHub Actions production environment using Azure OIDC to Azure App Service app-jm1-foundation-prod-v2",
+  "latest_deployment": {
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "222c2b4b5a8742c6666747412b3048abb4651baf",
+    "run_id": 35157025747
+  }
+}

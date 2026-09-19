@@ -1,0 +1,8 @@
+branch_or_ref,location,head_sha,ahead_of_main,behind_main,classification,reason
+codex/foundation-feedback-live,local-original,ed2af66493f90d0db630a81b3fdda36c6139e465,0,13,SAFE_RETIREMENT_CANDIDATE,"No unique commits or website source; preserve original worktree because it contains untracked evidence and a damaged packfile"
+cv02-foundation-cv02-nommap,local-original,ed2af66493f90d0db630a81b3fdda36c6139e465,0,13,SAFE_RETIREMENT_CANDIDATE,"Same ancestor commit; no unique history"
+codex/tech-currency-next16,remote,14069e80c251a671bfc4aa2b33f63705c6468bdf,0,3,SAFE_RETIREMENT_CANDIDATE,"Merged through PR 9; no unique commits"
+codex/why-first-audit-jmerrill-org,local-original,a741c73,0,21,SAFE_RETIREMENT_CANDIDATE,"Ancestor of main; upstream removed; no unique commits"
+codex/why-first-phase-2-copy-cleanup-jmerrill-org,local-original,739cbd7,0,19,SAFE_RETIREMENT_CANDIDATE,"Ancestor of main; upstream removed; no unique commits"
+landing,remote,6afaf61f262ccca70142fa177655bb83f4829359,UNRESOLVED,UNRESOLVED,UNIQUE_HISTORY_PRESERVE,"No common ancestor with main; do not merge or delete without separate history review"
+codex/jmfnd-repo-close-001,canonical-local,222c2b4b5a8742c6666747412b3048abb4651baf,0,0,ACTIVE_REQUIRED,"Evidence reconciliation branch created from current canonical main"
