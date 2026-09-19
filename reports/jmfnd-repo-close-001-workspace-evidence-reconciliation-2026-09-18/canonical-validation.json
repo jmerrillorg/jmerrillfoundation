@@ -1,0 +1,19 @@
+{
+  "validated_at": "2026-09-18",
+  "source_sha": "222c2b4b5a8742c6666747412b3048abb4651baf",
+  "node": "24.11.0",
+  "npm": "11.6.1",
+  "pnpm": "11.24.0",
+  "install": {"command": "pnpm install --frozen-lockfile", "result": "PASS", "note": "Repository uses pnpm-lock.yaml and has no package-lock.json; npm ci is not applicable."},
+  "typecheck": {"command": "pnpm exec tsc --noEmit", "result": "PASS"},
+  "lint": {"command": "pnpm lint", "result": "PASS_WITH_WARNINGS", "warnings": 2, "note": "Existing no-img-element optimization warnings only."},
+  "tests": {"result": "PASS", "suite": "human-first policy guard"},
+  "human_first_guard": {"command": "pnpm test:human-first", "result": "PASS", "tests_passed": 6},
+  "build": {"command": "pnpm build", "result": "PASS", "next": "16.3.5", "routes": 13},
+  "dependency_audit": {"command": "pnpm audit --prod --audit-level high", "result": "PASS", "known_vulnerabilities": 0},
+  "initial_environment_failure": {
+    "result": "NOT_A_CODE_DEFECT",
+    "cause": "Internal data volume exhausted during Next.js cache write",
+    "resolution": "Validation rerun successfully from the external canonical workspace"
+  }
+}

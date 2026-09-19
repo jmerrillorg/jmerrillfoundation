@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-09-18",
+  "public_site": {"url": "https://jmerrill.foundation", "result": "PASS", "http_status": 200},
+  "health_api": {
+    "url": "https://jmerrill.foundation/api/health",
+    "result": "PASS",
+    "service": "jmerrill-foundation",
+    "environment": "production",
+    "health": "ready",
+    "release_sha": "222c2b4b5a8742c6666747412b3048abb4651baf",
+    "runtime": "app-service"
+  },
+  "feedback_route": {"url": "https://jmerrill.foundation/share-your-experience", "result": "PASS", "phase_1_public_entry": "PROVEN", "submission_performed": false},
+  "volunteer_route": {"url": "https://jmerrill.foundation/volunteer", "result": "PASS", "authority": "Microsoft Forms", "submission_performed": false},
+  "donation_route": {"url": "https://jmerrill.foundation/donate", "result": "PASS", "authority": "iATS", "mutation_performed": false},
+  "canonical_metadata": {"result": "PASS", "open_graph_url": "https://jmerrill.foundation"},
+  "org_redirect": {"url": "https://jmerrill.org", "result": "PASS", "http_status": 301, "location": "https://www.jmerrill.foundation/", "final_status": 200},
+  "application_deployments": 0
+}
