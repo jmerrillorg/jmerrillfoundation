@@ -35,6 +35,7 @@ env:
 jobs:
   deploy:
     name: Build, Package, Deploy
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -54,6 +55,15 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm exec tsc --noEmit
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Human-first tests
+        run: pnpm test:human-first
 
       - name: Build
         env:
@@ -82,7 +92,7 @@ jobs:
         run: |
           for attempt in {1..18}; do
             code="$(curl -fsS -o /tmp/health.json -w '%{http_code}' --max-time 20 "$PRODUCTION_HEALTH_URL" || true)"
-            if [ "$code" = "200" ]; then
+            if [ "$code" = "200" ] && jq -e --arg expected "$GITHUB_SHA" '.ok == true and .health == "ready" and .release_sha == $expected' /tmp/health.json >/dev/null; then
               exit 0
             fi
             sleep 10

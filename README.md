@@ -83,7 +83,7 @@ The Phase 1 program/volunteer survey uses `NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION
 
 ## Legacy SWA Boundary
 
-`.github/workflows/azure-static-web-apps.yml` is rollback-only legacy infrastructure. Do not use it for normal production deployment. Static Web Apps resource/token review belongs to the enterprise `JM1-INFRA-RETIRE-001` retirement inventory.
+The former Foundation Static Web Apps deployment workflow is retired. The production Next.js standalone build deploys only to App Service; no Foundation Static Web Apps resource exists in the accessible JM1 subscriptions. An App Service rollback procedure requires separate proof before it can be treated as commissioned.
 
 The `org-to-foundation-redirect` Static Web App is a separate intentional alternate-domain redirect resource for `jmerrill.org`; it is not a Foundation-domain retirement candidate merely because it redirects to `jmerrill.foundation`.
 
