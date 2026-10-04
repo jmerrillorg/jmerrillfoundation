@@ -4,8 +4,8 @@ Observed: 2026-10-04. Status: **adapter recovered; public intake held**.
 
 ## Release authority
 
-- Foundation PR #18 merged as `d790c4beca39bd6b46a4c1535cf48eb2cfd0f0a6`. The protected PR validation and production deployment passed typecheck, lint, human-first tests, seven focused receipt tests, build, packaging, and the release-SHA health probe.
-- `https://jmerrill.foundation/api/health` returned `ready` and the same SHA. `https://jmerrill.foundation/privacy/volunteer-inquiries` returned 200. The approved response-only collection scope includes a separate unchecked optional updates choice. The production notice URL setting now points to that page; `FOUNDATION_INTAKE_ENABLED` remains `false` after setting readback and a fresh health probe.
+- Foundation PR #18 merged as `d790c4beca39bd6b46a4c1535cf48eb2cfd0f0a6`, correcting create-only POST and exact replay. PR #22 added bounded transient retries and deployed as `01d68eb95d02c1fdafe15afd5652bea834817e41`. Protected validation and deployment passed typecheck, lint, human-first tests, ten focused receipt tests, build, packaging, and the release-SHA health probe.
+- `https://jmerrill.foundation/api/health` returned `ready` at the PR #22 SHA. `https://jmerrill.foundation/privacy/volunteer-inquiries` returned 200. The approved response-only collection scope includes a separate unchecked optional updates choice. The production notice URL setting now points to that page; `FOUNDATION_INTAKE_ENABLED` remains `false` after setting readback and a fresh health probe.
 - The production volunteer page still exposed the `Email the Foundation` fallback and no public form. Public `POST /api/volunteer-intake` returned 503. The stopped legacy Forms flow was not restarted.
 - Azure Monitor rule `alert-fnd-prod-v2-http5xx` is enabled on `app-jm1-foundation-prod-v2`: total `Http5xx > 0` over five minutes, evaluated every minute, severity 1, routed to the existing `ag-jm1-web-infra006-ops` action group. The action-group metric-alert test reported email send `Succeeded` to the JM1 operations receiver. This is provider send proof, not independent mailbox readback or a manufactured live 5xx incident. The rule also sees intentional 503 responses while the public feature is disabled; investigate alert context before treating those as an intake outage.
 
@@ -16,6 +16,7 @@ The deployed App Service container ran a second Foundation server bound only to 
 - A synthetic `example.invalid` volunteer inquiry using submission ID `73d47e87-5661-49b3-9f35-66f9e1bd40fb` returned 202, that reference, and `idempotentReplay: false`.
 - An identical repeat returned 202, the same reference, and `idempotentReplay: true`. The unique key and exact stored-hash read prevented a second receipt.
 - A changed-payload repeat returned 409, not a false acknowledgement.
+- After PR #22 deployed, the same private-process route returned 202 with the original reference and `idempotentReplay: true`. The second private process was also stopped. Focused tests cover transient 503 then success, a lost first-create response resolved by unique-key/hash replay, exhausted transient retries, and permanent 403 without retry. No new synthetic receipt was created by the post-deployment replay.
 - A request without an allowed Origin returned 403. After the private test, public POST still returned 503.
 
 This proves deployed adapter create and replay behavior with the actual workload identity. It does not prove the reviewer action, a notice, an alert, or recovery from a downstream failure. No real volunteer, marketing message, donation, or impact count was created. The synthetic record must remain identifiable as certification evidence and follow governed disposition.
