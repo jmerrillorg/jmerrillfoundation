@@ -23,7 +23,7 @@ This repository owns the Foundation public website application source, route imp
 | `/programs` | Program hub |
 | `/impact` | Public impact narrative |
 | `/board` | Board recruitment |
-| `/volunteer` | Microsoft Forms volunteer and constituent interest entry |
+| `/volunteer` | Foundation volunteer opportunities and contact entry |
 | `/share-your-experience` | Customer Voice feedback entry |
 | `/donate` | Public donation information and external payment link |
 | `/story-hour` | Story Hour program page |
@@ -75,7 +75,7 @@ The Phase 1 program/volunteer survey uses `NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION
 
 ## Volunteer Intake Boundary
 
-`/volunteer` embeds the current Microsoft Forms interest form. This remains a business-continuity path and is not migrated by this repository authority package.
+`/volunteer` directs interest to the Foundation mailbox while the Microsoft Forms intake flow is stopped. Mailbox delivery is a continuity path, not a commissioned durable constituent receipt or follow-up workflow. Do not restore the embed until the enterprise Power Platform owner proves identity, consent, routing, failure handling, and an end-to-end synthetic submission.
 
 ## Donation Boundary
 

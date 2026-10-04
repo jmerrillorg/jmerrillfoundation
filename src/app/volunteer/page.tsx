@@ -138,19 +138,14 @@ export default function VolunteerPage() {
               Ready to Get Started?
             </h2>
             <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: 1.6 }}>
-              Start with the Foundation interest form. It helps us route volunteer interest, board interest, school partnership inquiries, Story Hour reader interest, Reading Station requests, youth author or classroom author inquiries, ESL support interest, donor questions, and general Foundation inquiries to the right next step.
+              Interested in volunteering, serving on the board, or partnering with a Foundation program? Contact the Foundation team and tell us which opportunity interests you. Please do not include sensitive personal information.
             </p>
-
-            {/* Microsoft Forms Embed */}
-            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(147, 50, 158, 0.1)' }}>
-              <iframe
-                src="https://forms.microsoft.com/Pages/ResponsePage.aspx?id=XgctNReOaUGfjiLmlGzmbWLYUJckILxClwf4SzJd-xlUQktYVVZWRjg0SFc0RjNSWVVJOUMzNVZCNi4u"
-                width="100%"
-                height="600"
-                style={{ border: 'none', display: 'block' }}
-                title="JM1 Foundation Constituent Intake Form"
-              />
-            </div>
+            <a
+              href="mailto:foundation@jmerrill.one?subject=Foundation%20Volunteer%20Interest"
+              style={{ display: 'inline-block', backgroundColor: 'var(--primary)', color: '#FFFFFF', padding: '0.85rem 1.25rem', textDecoration: 'none', fontWeight: 600 }}
+            >
+              Email the Foundation
+            </a>
           </div>
         </div>
       </section>
