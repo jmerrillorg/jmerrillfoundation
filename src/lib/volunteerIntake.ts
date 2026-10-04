@@ -78,7 +78,7 @@ export async function acceptVolunteerReceipt(submission: VolunteerSubmission, co
     'OData-Version': '4.0',
     'OData-MaxVersion': '4.0',
   }
-  const created = await fetcher(collectionUrl, {
+  const createRequest: RequestInit = {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -99,7 +99,18 @@ export async function acceptVolunteerReceipt(submission: VolunteerSubmission, co
       'ownerid@odata.bind': `/teams(${config.reviewTeamId})`,
     }),
     cache: 'no-store',
-  })
+  }
+  let created: Response | undefined
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      created = await fetcher(collectionUrl, createRequest)
+      if (created.ok || created.status === 412 || (created.status !== 408 && created.status !== 429 && created.status < 500)) break
+    } catch {
+      if (attempt === 2) throw new ReceiptError('UNAVAILABLE')
+    }
+    if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, 150 * 2 ** attempt))
+  }
+  if (!created) throw new ReceiptError('UNAVAILABLE')
   if (created.ok) return { referenceId: submission.submissionId, replay: false }
   if (created.status !== 412) throw new ReceiptError('UNAVAILABLE')
 
