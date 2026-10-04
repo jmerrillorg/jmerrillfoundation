@@ -11,7 +11,7 @@
     "build": "next build",
     "package:appservice": "node scripts/package-appservice.mjs",
     "test:human-first": "node scripts/human_first_why_first_tests.mjs",
-    "test:volunteer-intake": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test scripts/volunteer_intake_tests.mjs scripts/volunteer_notice_tests.mjs",
+    "test:volunteer-intake": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test scripts/volunteer_intake_tests.mjs scripts/volunteer_notice_tests.mjs scripts/volunteer_reconciler_tests.mjs",
     "start": "next start",
     "lint": "eslint ."
   },
