@@ -5,7 +5,7 @@ Observed: 2026-10-04. Status: **adapter recovered; public intake held**.
 ## Release authority
 
 - Foundation PR #18 merged as `d790c4beca39bd6b46a4c1535cf48eb2cfd0f0a6`. The protected PR validation and production deployment passed typecheck, lint, human-first tests, seven focused receipt tests, build, packaging, and the release-SHA health probe.
-- `https://jmerrill.foundation/api/health` returned `ready` and the same SHA. `https://jmerrill.foundation/privacy/volunteer-inquiries` returned 200.
+- `https://jmerrill.foundation/api/health` returned `ready` and the same SHA. `https://jmerrill.foundation/privacy/volunteer-inquiries` returned 200. The approved response-only collection scope includes a separate unchecked optional updates choice. The production notice URL setting now points to that page; `FOUNDATION_INTAKE_ENABLED` remains `false` after setting readback and a fresh health probe.
 - The production volunteer page still exposed the `Email the Foundation` fallback and no public form. Public `POST /api/volunteer-intake` returned 503. The stopped legacy Forms flow was not restarted.
 
 ## Bounded actual-adapter proof
@@ -21,10 +21,9 @@ This proves deployed adapter create and replay behavior with the actual workload
 
 ## Remaining commissioning gates
 
-1. Jackie must approve the exact public volunteer-inquiry notice wording; public availability of a page alone is not business approval. The production `FOUNDATION_PRIVACY_NOTICE_URL` remains unset.
-2. OPS must prove a restricted human reviewer can inspect the Foundation receipt and complete an append-only governed action without relying on Jackie's existing System Administrator role or reading another business domain.
-3. OPS must prove a reference-only notice to `foundation@jmerrill.one`, bounded retry, a system-owned failure signal/alert, and recoverable failure state. The website adapter does not send notifications.
-4. The full synthetic reviewer, notice, negative-access, and failure/recovery path must pass before `FOUNDATION_INTAKE_ENABLED` is set true. Keep the email fallback and old Forms flow stopped.
+1. OPS must prove a restricted human reviewer can inspect the Foundation receipt and complete an append-only governed action without relying on Jackie's existing System Administrator role or reading another business domain.
+2. OPS must prove a reference-only notice to `foundation@jmerrill.one`, bounded retry, a system-owned failure signal/alert, and recoverable failure state. The website adapter does not send notifications.
+3. The full synthetic reviewer, notice, negative-access, and failure/recovery path must pass before `FOUNDATION_INTAKE_ENABLED` is set true. Keep the email fallback and old Forms flow stopped.
 
 `FOUNDATION_ADAPTER_RECEIPT=PASS`
 
