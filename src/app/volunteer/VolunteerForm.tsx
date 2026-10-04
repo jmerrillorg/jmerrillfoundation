@@ -7,6 +7,7 @@ const submissionKey = 'jm1fnd-volunteer-submission-id'
 export default function VolunteerForm({ privacyNoticeUrl }: { privacyNoticeUrl: string }) {
   const [busy, setBusy] = useState(false)
   const [referenceId, setReferenceId] = useState('')
+  const [pendingReferenceId, setPendingReferenceId] = useState('')
   const [error, setError] = useState('')
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -37,8 +38,12 @@ export default function VolunteerForm({ privacyNoticeUrl }: { privacyNoticeUrl: 
         }),
       })
       const result = await response.json() as { success?: boolean; referenceId?: string; message?: string }
-      if (!response.ok || !result.success || !result.referenceId) throw new Error(result.message || 'We cannot receive this request right now. Please email the Foundation.')
+      if (!response.ok || !result.success || !result.referenceId) {
+        if (result.referenceId) setPendingReferenceId(result.referenceId)
+        throw new Error(result.message || 'We cannot receive this request right now. Please email the Foundation.')
+      }
       sessionStorage.removeItem(submissionKey)
+      setPendingReferenceId('')
       setReferenceId(result.referenceId)
       form.reset()
     } catch (cause) {
@@ -88,7 +93,7 @@ export default function VolunteerForm({ privacyNoticeUrl }: { privacyNoticeUrl: 
       <input type="checkbox" name="marketingOptIn" style={{ marginTop: '0.2rem' }} />
       <span>I would also like optional updates about Foundation programs and events.</span>
     </label>
-    {error && <p role="alert" style={{ color: '#9D2626', marginBottom: '1rem' }}>{error} <a href="mailto:foundation@jmerrill.one">Email the Foundation</a>.</p>}
+    {error && <p role="alert" style={{ color: '#9D2626', marginBottom: '1rem' }}>{error} {pendingReferenceId && <span>Reference: <strong>{pendingReferenceId}</strong>. </span>}<a href="mailto:foundation@jmerrill.one">Email the Foundation</a>.</p>}
     <button type="submit" disabled={busy} style={{ backgroundColor: 'var(--primary)', color: '#FFFFFF', padding: '0.85rem 1.25rem', border: 0, borderRadius: '4px', cursor: busy ? 'wait' : 'pointer', font: 'inherit', fontWeight: 600 }}>
       {busy ? 'Sending...' : 'Send inquiry'}
     </button>

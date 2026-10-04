@@ -1,6 +1,7 @@
 import { ManagedIdentityCredential } from '@azure/identity'
 import { NextRequest, NextResponse } from 'next/server'
 import { acceptVolunteerReceipt, isGuid, parseVolunteerSubmission, ReceiptError } from '@/lib/volunteerIntake'
+import { sendVolunteerNotice, VOLUNTEER_RELAY_AUDIENCE } from '@/lib/volunteerNotice'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -26,7 +27,7 @@ function rateLimited(request: NextRequest): boolean {
 }
 
 export async function POST(request: NextRequest) {
-  if (process.env.FOUNDATION_INTAKE_ENABLED !== 'true') return reply(503, { success: false, fallbackEmail: 'foundation@jmerrill.one' })
+  if (process.env.FOUNDATION_INTAKE_ENABLED !== 'true' || process.env.FOUNDATION_RELAY_ENABLED !== 'true') return reply(503, { success: false, fallbackEmail: 'foundation@jmerrill.one' })
   if (!allowedOrigins.has(request.headers.get('origin') || '')) return reply(403, { success: false })
   if (!request.headers.get('content-type')?.startsWith('application/json')) return reply(415, { success: false })
   if (rateLimited(request)) return reply(429, { success: false, fallbackEmail: 'foundation@jmerrill.one' })
@@ -49,19 +50,32 @@ export async function POST(request: NextRequest) {
     return reply(503, { success: false, fallbackEmail: 'foundation@jmerrill.one' })
   }
 
+  let referenceId: string
+  let replay: boolean
+  const credential = new ManagedIdentityCredential()
   try {
-    const credential = new ManagedIdentityCredential()
     const accessToken = await credential.getToken(`${dataverseUrl}/.default`)
     if (!accessToken?.token) throw new Error('No managed identity token')
     const receipt = await acceptVolunteerReceipt(submission, {
       dataverseUrl, reviewTeamId, privacyNoticeUrl, token: accessToken.token,
     })
-    return reply(202, { success: true, referenceId: receipt.referenceId, idempotentReplay: receipt.replay })
+    referenceId = receipt.referenceId
+    replay = receipt.replay
   } catch (error) {
     if (error instanceof ReceiptError && error.code === 'CONFLICT') {
       return reply(409, { success: false, message: 'This request changed after it was sent. Please email the Foundation.', fallbackEmail: 'foundation@jmerrill.one' })
     }
     console.error('Foundation volunteer intake receipt unavailable', error instanceof ReceiptError ? error.code : 'AUTH_OR_NETWORK')
     return reply(503, { success: false, message: 'We cannot receive this request right now. Please email the Foundation.', fallbackEmail: 'foundation@jmerrill.one' })
+  }
+
+  try {
+    const accessToken = await credential.getToken(VOLUNTEER_RELAY_AUDIENCE)
+    if (!accessToken?.token) throw new Error('No relay token')
+    await sendVolunteerNotice(referenceId, accessToken.token)
+    return reply(202, { success: true, referenceId, idempotentReplay: replay })
+  } catch {
+    console.error('Foundation volunteer notice unavailable', 'RELAY_OR_AUTH')
+    return reply(503, { success: false, referenceId, message: 'Your inquiry was saved, but we could not notify the Foundation team. Please keep your reference and try again or email the Foundation.', fallbackEmail: 'foundation@jmerrill.one' })
   }
 }

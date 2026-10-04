@@ -63,7 +63,7 @@ const tagColors: Record<string, { color: string; bg: string }> = {
 
 export default function VolunteerPage() {
   const privacyNoticeUrl = process.env.FOUNDATION_PRIVACY_NOTICE_URL || ''
-  const intakeEnabled = process.env.FOUNDATION_INTAKE_ENABLED === 'true' && privacyNoticeUrl.startsWith('https://')
+  const intakeEnabled = process.env.FOUNDATION_INTAKE_ENABLED === 'true' && process.env.FOUNDATION_RELAY_ENABLED === 'true' && privacyNoticeUrl.startsWith('https://')
   return (
     <>
       {/* HEADER */}
