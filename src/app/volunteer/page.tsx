@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import VolunteerForm from './VolunteerForm'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Volunteer',
@@ -59,6 +62,8 @@ const tagColors: Record<string, { color: string; bg: string }> = {
 }
 
 export default function VolunteerPage() {
+  const privacyNoticeUrl = process.env.FOUNDATION_PRIVACY_NOTICE_URL || ''
+  const intakeEnabled = process.env.FOUNDATION_INTAKE_ENABLED === 'true' && privacyNoticeUrl.startsWith('https://')
   return (
     <>
       {/* HEADER */}
@@ -140,10 +145,9 @@ export default function VolunteerPage() {
             <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: 1.6 }}>
               Interested in volunteering, serving on the board, or partnering with a Foundation program? Contact the Foundation team and tell us which opportunity interests you. Please do not include sensitive personal information.
             </p>
-            <a
-              href="mailto:foundation@jmerrill.one?subject=Foundation%20Volunteer%20Interest"
-              style={{ display: 'inline-block', backgroundColor: 'var(--primary)', color: '#FFFFFF', padding: '0.85rem 1.25rem', textDecoration: 'none', fontWeight: 600 }}
-            >
+            {intakeEnabled && <VolunteerForm privacyNoticeUrl={privacyNoticeUrl} />}
+            <a href="mailto:foundation@jmerrill.one?subject=Foundation%20Volunteer%20Interest"
+              style={{ display: 'inline-block', backgroundColor: intakeEnabled ? 'transparent' : 'var(--primary)', color: intakeEnabled ? 'var(--primary)' : '#FFFFFF', padding: '0.85rem 1.25rem', textDecoration: 'none', fontWeight: 600, marginTop: intakeEnabled ? '1rem' : 0 }}>
               Email the Foundation
             </a>
           </div>
