@@ -7,6 +7,7 @@ Observed: 2026-10-04. Status: **adapter recovered; public intake held**.
 - Foundation PR #18 merged as `d790c4beca39bd6b46a4c1535cf48eb2cfd0f0a6`. The protected PR validation and production deployment passed typecheck, lint, human-first tests, seven focused receipt tests, build, packaging, and the release-SHA health probe.
 - `https://jmerrill.foundation/api/health` returned `ready` and the same SHA. `https://jmerrill.foundation/privacy/volunteer-inquiries` returned 200. The approved response-only collection scope includes a separate unchecked optional updates choice. The production notice URL setting now points to that page; `FOUNDATION_INTAKE_ENABLED` remains `false` after setting readback and a fresh health probe.
 - The production volunteer page still exposed the `Email the Foundation` fallback and no public form. Public `POST /api/volunteer-intake` returned 503. The stopped legacy Forms flow was not restarted.
+- Azure Monitor rule `alert-fnd-prod-v2-http5xx` is enabled on `app-jm1-foundation-prod-v2`: total `Http5xx > 0` over five minutes, evaluated every minute, severity 1, routed to the existing `ag-jm1-web-infra006-ops` action group. The action-group metric-alert test reported email send `Succeeded` to the JM1 operations receiver. This is provider send proof, not independent mailbox readback or a manufactured live 5xx incident. The rule also sees intentional 503 responses while the public feature is disabled; investigate alert context before treating those as an intake outage.
 
 ## Bounded actual-adapter proof
 
@@ -22,7 +23,7 @@ This proves deployed adapter create and replay behavior with the actual workload
 ## Remaining commissioning gates
 
 1. OPS must prove a restricted human reviewer can inspect the Foundation receipt and complete an append-only governed action without relying on Jackie's existing System Administrator role or reading another business domain.
-2. OPS must prove a reference-only notice to `foundation@jmerrill.one`, bounded retry, a system-owned failure signal/alert, and recoverable failure state. The website adapter does not send notifications.
+2. OPS must prove a reference-only notice to `foundation@jmerrill.one`, bounded retry, an intake-specific failure/recovery path, and recoverable failure state. The enabled App Service 5xx alert is a broad infrastructure signal, not proof that those business-workflow controls exist. The website adapter does not send notifications.
 3. The full synthetic reviewer, notice, negative-access, and failure/recovery path must pass before `FOUNDATION_INTAKE_ENABLED` is set true. Keep the email fallback and old Forms flow stopped.
 
 `FOUNDATION_ADAPTER_RECEIPT=PASS`
@@ -36,5 +37,7 @@ This proves deployed adapter create and replay behavior with the actual workload
 `FOUNDATION_REFERENCE_NOTIFICATION=NOT_COMMISSIONED`
 
 `FOUNDATION_FAILURE_RECOVERY=NOT_PROVEN`
+
+`FOUNDATION_APP_5XX_ALERT=ENABLED_PROVIDER_TEST_PASS`
 
 `FOUNDATION_VOLUNTEER_COMMISSIONING=PARTIAL`
