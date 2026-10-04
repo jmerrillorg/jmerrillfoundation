@@ -69,7 +69,7 @@ type ReceiptConfig = {
 export async function acceptVolunteerReceipt(submission: VolunteerSubmission, config: ReceiptConfig): Promise<ReceiptResult> {
   const fetcher = config.fetcher || fetch
   const key = `jm1fnd_submissionid='${submission.submissionId}'`
-  const url = `${config.dataverseUrl.replace(/\/$/, '')}/api/data/v9.2/jm1fnd_volunteerinquiries(${key})`
+  const collectionUrl = `${config.dataverseUrl.replace(/\/$/, '')}/api/data/v9.2/jm1fnd_volunteerinquiries`
   const hash = submissionHash(submission)
   const headers = {
     Authorization: `Bearer ${config.token}`,
@@ -78,10 +78,11 @@ export async function acceptVolunteerReceipt(submission: VolunteerSubmission, co
     'OData-Version': '4.0',
     'OData-MaxVersion': '4.0',
   }
-  const created = await fetcher(url, {
-    method: 'PATCH',
-    headers: { ...headers, 'If-None-Match': '*' },
+  const created = await fetcher(collectionUrl, {
+    method: 'POST',
+    headers,
     body: JSON.stringify({
+      jm1fnd_submissionid: submission.submissionId,
       jm1fnd_name: `Volunteer inquiry ${submission.submissionId}`,
       jm1fnd_fullname: `${submission.firstName} ${submission.lastName}`,
       jm1fnd_email: submission.email,
@@ -102,7 +103,7 @@ export async function acceptVolunteerReceipt(submission: VolunteerSubmission, co
   if (created.ok) return { referenceId: submission.submissionId, replay: false }
   if (created.status !== 412) throw new ReceiptError('UNAVAILABLE')
 
-  const existing = await fetcher(`${url}?$select=jm1fnd_payloadhash`, {
+  const existing = await fetcher(`${collectionUrl}(${key})?$select=jm1fnd_payloadhash`, {
     method: 'GET', headers, cache: 'no-store',
   })
   if (!existing.ok) throw new ReceiptError('UNAVAILABLE')

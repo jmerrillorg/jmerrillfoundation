@@ -40,5 +40,8 @@ jobs:
       - name: Human-first tests
         run: pnpm test:human-first
 
+      - name: Volunteer intake receipt tests
+        run: pnpm test:volunteer-intake
+
       - name: Build
         run: pnpm build

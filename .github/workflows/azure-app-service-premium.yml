@@ -65,6 +65,9 @@ jobs:
       - name: Human-first tests
         run: pnpm test:human-first
 
+      - name: Volunteer intake receipt tests
+        run: pnpm test:volunteer-intake
+
       - name: Build
         env:
           JM1_RELEASE_SHA: ${{ github.sha }}
