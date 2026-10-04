@@ -77,6 +77,8 @@ The Phase 1 program/volunteer survey uses `NEXT_PUBLIC_CUSTOMER_VOICE_FOUNDATION
 
 `/volunteer` directs interest to the Foundation mailbox while the Microsoft Forms intake flow is stopped. Mailbox delivery is a continuity path, not a commissioned durable constituent receipt or follow-up workflow. Do not restore the embed until the enterprise Power Platform owner proves identity, consent, routing, failure handling, and an end-to-end synthetic submission.
 
+The source-controlled volunteer form and `/api/volunteer-intake` adapter are off by default. They use an App Service managed identity to create a Foundation-only Dataverse receipt, not the retired Forms flow or orphan Function. The exact table fields and release gates are in `reports/foundation-volunteer-intake-business-contract-2026-10-04.md`. Keep `FOUNDATION_INTAKE_ENABLED` unset until the privacy notice, Foundation receipt/table key, review team, scoped identity, reference-only mailbox notice, replay, failure recovery, and synthetic end-to-end proof are all commissioned. The email fallback stays visible after activation.
+
 ## Donation Boundary
 
 `/donate` links to the current external secure payment portal. Direct Stripe, Business Central, Dataverse donation posting, and financial migration work are outside this repository authority package.
