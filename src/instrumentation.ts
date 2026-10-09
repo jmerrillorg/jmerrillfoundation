@@ -30,7 +30,6 @@ export async function register() {
           const result = await scanVolunteerReviewAge({
             dataverseUrl,
             reviewTeamId: process.env.FOUNDATION_REVIEW_TEAM_ID || '',
-            afterUtc: process.env.FOUNDATION_NOTICE_RECONCILE_AFTER_UTC,
             token: receiptToken.token,
             ...policy,
             now: new Date(),

@@ -29,9 +29,12 @@ export function reviewAgeSignalEvent(result: ReviewAgeResult) {
 
 export function reviewAgePolicyFromEnv(env: Record<string, string | undefined>) {
   const policyId = env.FOUNDATION_REVIEW_AGE_POLICY_ID || ''
+  const afterUtc = env.FOUNDATION_REVIEW_AGE_AFTER_UTC || ''
   const threshold = env.FOUNDATION_REVIEW_AGE_THRESHOLD_MINUTES || ''
   const exclusions = env.FOUNDATION_REVIEW_AGE_EXCLUDE_SUBMISSIONS || ''
-  if (!/^[a-zA-Z0-9][a-zA-Z0-9._-]{2,79}$/.test(policyId) || !/^[1-9]\d*$/.test(threshold)) {
+  if (!/^[a-zA-Z0-9][a-zA-Z0-9._-]{2,79}$/.test(policyId)
+    || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(afterUtc)
+    || !Number.isFinite(new Date(afterUtc).getTime()) || !/^[1-9]\d*$/.test(threshold)) {
     throw new Error('REVIEW_AGE_CONFIG_INVALID')
   }
   const thresholdMinutes = Number(threshold)
@@ -42,7 +45,7 @@ export function reviewAgePolicyFromEnv(env: Record<string, string | undefined>) 
   if (!exclusions || ids.some((id) => !guid.test(id)) || new Set(ids).size !== ids.length) {
     throw new Error('REVIEW_AGE_CONFIG_INVALID')
   }
-  return { thresholdMinutes, excludedSubmissionIds: new Set(ids) }
+  return { afterUtc, thresholdMinutes, excludedSubmissionIds: new Set(ids) }
 }
 
 export async function scanVolunteerReviewAge(config: Config): Promise<ReviewAgeResult> {

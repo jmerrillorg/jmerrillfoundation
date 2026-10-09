@@ -36,17 +36,21 @@ function config(overrides = {}) {
 test('requires explicit policy identity, age threshold, and exclusion declaration', () => {
   const values = {
     FOUNDATION_REVIEW_AGE_POLICY_ID: 'FND-REVIEW-AGE-APPROVED',
+    FOUNDATION_REVIEW_AGE_AFTER_UTC: '2026-10-04T15:43:00Z',
     FOUNDATION_REVIEW_AGE_THRESHOLD_MINUTES: '60',
     FOUNDATION_REVIEW_AGE_EXCLUDE_SUBMISSIONS: synthetic,
   }
   assert.throws(() => reviewAgePolicyFromEnv({}), /REVIEW_AGE_CONFIG_INVALID/)
   assert.deepEqual(reviewAgePolicyFromEnv(values), {
+    afterUtc: '2026-10-04T15:43:00Z',
     thresholdMinutes: 60,
     excludedSubmissionIds: new Set([synthetic]),
   })
   assert.deepEqual(reviewAgePolicyFromEnv({ ...values, FOUNDATION_REVIEW_AGE_EXCLUDE_SUBMISSIONS: 'none' }).excludedSubmissionIds, new Set())
   for (const change of [
     { FOUNDATION_REVIEW_AGE_POLICY_ID: '' },
+    { FOUNDATION_REVIEW_AGE_AFTER_UTC: '' },
+    { FOUNDATION_REVIEW_AGE_AFTER_UTC: 'not-a-timestamp' },
     { FOUNDATION_REVIEW_AGE_THRESHOLD_MINUTES: '0' },
     { FOUNDATION_REVIEW_AGE_THRESHOLD_MINUTES: '1.5' },
     { FOUNDATION_REVIEW_AGE_EXCLUDE_SUBMISSIONS: '' },
