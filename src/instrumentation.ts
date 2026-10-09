@@ -2,6 +2,7 @@ import { ManagedIdentityCredential } from '@azure/identity'
 import { reconcileVolunteerNotices } from '@/lib/volunteerNoticeReconciler'
 import { noticeWorkerState } from '@/lib/volunteerNoticeWorkerState'
 import { sendVolunteerNotice, VOLUNTEER_RELAY_AUDIENCE } from '@/lib/volunteerNotice'
+import { reviewAgePolicyFromEnv, reviewAgeSignalEvent, scanVolunteerReviewAge } from '@/lib/volunteerReviewAge'
 
 export async function register() {
   if (process.env.NEXT_RUNTIME !== 'nodejs' || process.env.FOUNDATION_NOTICE_RECONCILE_ENABLED !== 'true') return
@@ -12,6 +13,8 @@ export async function register() {
     if (state.running) return
     state.running = true
     state.lastAttemptAt = Date.now()
+    const ageEnabled = process.env.FOUNDATION_REVIEW_AGE_SIGNAL_ENABLED === 'true'
+    let ageAttempted = false
     try {
       const dataverseUrl = process.env.FOUNDATION_DATAVERSE_URL || ''
       if (process.env.FOUNDATION_RELAY_ENABLED !== 'true' || !process.env.FOUNDATION_NOTICE_RECONCILE_AFTER_UTC) {
@@ -19,8 +22,31 @@ export async function register() {
       }
       const credential = new ManagedIdentityCredential()
       const receiptToken = await credential.getToken(`${dataverseUrl}/.default`)
+      if (!receiptToken?.token) throw new Error('RECONCILER_AUTH_UNAVAILABLE')
+      if (ageEnabled) {
+        ageAttempted = true
+        try {
+          const policy = reviewAgePolicyFromEnv(process.env)
+          const result = await scanVolunteerReviewAge({
+            dataverseUrl,
+            reviewTeamId: process.env.FOUNDATION_REVIEW_TEAM_ID || '',
+            token: receiptToken.token,
+            ...policy,
+            now: new Date(),
+          })
+          state.reviewAgeStatus = result.agedCount ? 'aged' : 'clear'
+          state.reviewAgeLastSuccessAt = Date.now()
+          state.reviewAgeLastError = null
+          console.warn('FND_REVIEW_AGE_SIGNAL', JSON.stringify(reviewAgeSignalEvent(result)))
+        } catch (error) {
+          state.reviewAgeStatus = 'failed'
+          state.reviewAgeLastError = error instanceof Error && error.message.startsWith('REVIEW_AGE_')
+            ? error.message : 'REVIEW_AGE_UNAVAILABLE'
+          console.error('FND_REVIEW_AGE_SIGNAL', JSON.stringify({ status: 'failed', reason: state.reviewAgeLastError }))
+        }
+      }
       const relayToken = await credential.getToken(VOLUNTEER_RELAY_AUDIENCE)
-      if (!receiptToken?.token || !relayToken?.token) throw new Error('RECONCILER_AUTH_UNAVAILABLE')
+      if (!relayToken?.token) throw new Error('RECONCILER_AUTH_UNAVAILABLE')
       const result = await reconcileVolunteerNotices({
         dataverseUrl,
         reviewTeamId: process.env.FOUNDATION_REVIEW_TEAM_ID || '',
@@ -37,6 +63,11 @@ export async function register() {
       state.lastSuccessAt = Date.now()
       state.lastError = null
     } catch (error) {
+      if (ageEnabled && !ageAttempted) {
+        state.reviewAgeStatus = 'failed'
+        state.reviewAgeLastError = 'REVIEW_AGE_UNAVAILABLE'
+        console.error('FND_REVIEW_AGE_SIGNAL', JSON.stringify({ status: 'failed', reason: state.reviewAgeLastError }))
+      }
       state.lastError = error instanceof Error && error.message.startsWith('RECONCILER_') ? error.message : 'RECONCILER_UNAVAILABLE'
       console.error('Foundation notice reconciliation unavailable', state.lastError)
     } finally {

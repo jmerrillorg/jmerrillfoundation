@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { noticeWorkerHealth } from '@/lib/volunteerNoticeWorkerState'
+import { noticeWorkerHealth, reviewAgeSignalHealth } from '@/lib/volunteerNoticeWorkerState'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,5 +14,6 @@ export function GET() {
     release_sha: process.env.JM1_RELEASE_SHA || 'unknown',
     runtime: 'app-service',
     notice_reconciliation: noticeReconciliation,
+    review_age_signal: reviewAgeSignalHealth(),
   }, { status: ready ? 200 : 503 })
 }
