@@ -106,6 +106,7 @@ test('fails closed on wrong source/team, duplicate row, future timestamp, and in
 
 test('scan and configuration failures never report a clear queue', async () => {
   await assert.rejects(scanVolunteerReviewAge(config({ thresholdMinutes: 0 })), /REVIEW_AGE_CONFIG_INVALID/)
+  await assert.rejects(scanVolunteerReviewAge(config({ afterUtc: '2026-10-06T00:00:00Z' })), /REVIEW_AGE_CONFIG_INVALID/)
   await assert.rejects(scanVolunteerReviewAge(config({ fetcher: async () => new Response(null, { status: 503 }) })), /REVIEW_AGE_SCAN_UNAVAILABLE/)
   await assert.rejects(scanVolunteerReviewAge(config({ fetcher: async () => Response.json({ value: {} }) })), /REVIEW_AGE_SCAN_INVALID/)
   await assert.rejects(scanVolunteerReviewAge(config({ fetcher: async () => Response.json({ value: [], '@odata.nextLink': 'https://jm1hq.crm.dynamics.com/api/data/v9.2/jm1fnd_volunteerinquiries?$skiptoken=loop' }) })), /REVIEW_AGE_PAGE_LIMIT/)

@@ -53,6 +53,7 @@ export async function scanVolunteerReviewAge(config: Config): Promise<ReviewAgeR
     || !Number.isSafeInteger(config.thresholdMinutes) || config.thresholdMinutes < 1
     || !Number.isFinite(config.now.getTime()) || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(config.afterUtc)
     || !Number.isFinite(new Date(config.afterUtc).getTime())
+    || new Date(config.afterUtc) > config.now
     || Array.from(config.excludedSubmissionIds).some((id) => !guid.test(id))) {
     throw new Error('REVIEW_AGE_CONFIG_INVALID')
   }
