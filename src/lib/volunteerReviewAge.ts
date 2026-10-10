@@ -23,7 +23,7 @@ type Config = {
 
 export type ReviewAgeResult = { eligibleCount: number; agedCount: number }
 
-export function reviewAgeSignalEvent(result: ReviewAgeResult) {
+export function reviewAgeSignalEvent(result: ReviewAgeResult): { status: 'clear' | 'aged'; agedCount: number } {
   return { status: result.agedCount ? 'aged' : 'clear', agedCount: result.agedCount }
 }
 
