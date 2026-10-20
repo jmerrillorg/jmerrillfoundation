@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import { thanksgiving as event } from '@/lib/thanksgiving'
 import ReservationForm from './ReservationForm'
@@ -5,6 +6,7 @@ export const metadata: Metadata = { title: `Reserve a Thanksgiving meal box | ${
 export default function ThanksgivingPage() {
   return <><div aria-hidden="true" style={{ height: 96, background: '#1a1025' }} /><section aria-label="Thanksgiving meal reservations" style={{ maxWidth: 860, margin: '0 auto', padding: '2rem 1.5rem 4rem', color: '#29241f', background: '#fff' }}>
     <p style={{ textTransform: 'uppercase', letterSpacing: '.12em', fontSize: 14 }}>{event.organization}</p>
+    <Image src="/thanksgiving-2026-header.png" alt="A welcoming Thanksgiving table with autumn flowers, a roast turkey and traditional sides" width={2164} height={727} priority sizes="(max-width: 860px) 100vw, 812px" style={{ width: '100%', height: 'auto', borderRadius: 16, marginTop: 20, marginBottom: 24 }} />
     <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', lineHeight: 1.1, margin: '1rem 0' }}>A Thanksgiving table for your household.</h1>
     <p style={{ fontSize: 20, lineHeight: 1.6 }}>In partnership with the Byron Saunders Foundation, we’re providing Thanksgiving meal boxes for our community. Limited quantities available.</p>
     <section aria-labelledby="box-contents" style={{ margin: '2rem 0', lineHeight: 1.7 }}>
