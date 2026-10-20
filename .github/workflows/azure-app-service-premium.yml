@@ -68,6 +68,9 @@ jobs:
       - name: Volunteer intake receipt tests
         run: pnpm test:volunteer-intake
 
+      - name: Test meal reservations
+        run: node --test scripts/test-meal-reservations.mjs
+
       - name: Build
         env:
           JM1_RELEASE_SHA: ${{ github.sha }}
