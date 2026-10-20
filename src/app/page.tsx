@@ -73,7 +73,7 @@ const programs = [
 export default function HomePage() {
   return (
     <>
-      <aside style={{ padding: '7rem 1.5rem 1.25rem', background: '#f4eadc', color: '#29241f', textAlign: 'center' }}><Link href="/thanksgiving" style={{ textDecoration: 'underline', fontWeight: 700 }}>Thanksgiving meal boxes · November 20 pickup · View details and reserve</Link></aside>
+      <aside style={{ padding: '7rem 1.5rem 1.25rem', background: '#1a1025', color: '#fff', textAlign: 'center' }}><Link href="/thanksgiving" style={{ textDecoration: 'underline', fontWeight: 700 }}>Thanksgiving meal boxes · November 20 pickup · View details and reserve</Link></aside>
       {/* HERO */}
       <section style={{
         minHeight: '100vh',
