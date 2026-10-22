@@ -71,6 +71,9 @@ jobs:
       - name: Test meal reservations
         run: node --test scripts/test-meal-reservations.mjs
 
+      - name: Test private Thanksgiving roster
+        run: pnpm test:thanksgiving-roster
+
       - name: Build
         env:
           JM1_RELEASE_SHA: ${{ github.sha }}
