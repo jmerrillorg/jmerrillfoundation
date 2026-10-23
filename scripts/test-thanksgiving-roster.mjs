@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { generateKeyPairSync, createSign } from 'node:crypto'
 import { thanksgivingReviewerAccess } from '../src/lib/thanksgivingRosterAuth.ts'
 import { rosterSnapshot } from '../src/lib/thanksgivingRoster.ts'
+import { rosterUrlWithoutAuthFragment } from '../src/lib/thanksgivingRosterUrl.ts'
 
 const tenant = '352d075e-8e17-4169-9f8e-22e6946ce66d'
 const client = '11111111-1111-1111-1111-111111111111'
@@ -53,4 +54,11 @@ test('capacity and private-field projection use the same ledger', () => {
   assert.equal(result.refreshedAt, '2026-10-22T12:00:00Z')
   assert.equal(JSON.stringify(result).includes('householdKey'), false)
   assert.equal(JSON.stringify(result).includes('payloadHash'), false)
+})
+
+test('private roster removes only the App Service token fragment from its visible URL', () => {
+  assert.equal(rosterUrlWithoutAuthFragment('#token=fixture-only', '/admin/thanksgiving', ''), '/admin/thanksgiving')
+  assert.equal(rosterUrlWithoutAuthFragment('#token=fixture-only', '/admin/thanksgiving', '?view=list'), '/admin/thanksgiving?view=list')
+  assert.equal(rosterUrlWithoutAuthFragment('#section', '/admin/thanksgiving', ''), null)
+  assert.equal(rosterUrlWithoutAuthFragment('', '/admin/thanksgiving', ''), null)
 })
