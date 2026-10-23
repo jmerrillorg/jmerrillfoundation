@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { rosterUrlWithoutAuthFragment } from '@/lib/thanksgivingRosterUrl'
 import './roster.css'
 
 type Reservation = { name: string; email: string; phone: string; address: string; unit: string; city: string; state: string; zip: string; reference: string; acceptedAt: string }
@@ -27,7 +28,11 @@ export default function Roster() {
       setState('ready')
     } catch { setState('unavailable') }
   }, [])
-  useEffect(() => { void refresh() }, [refresh])
+  useEffect(() => {
+    const cleanUrl = rosterUrlWithoutAuthFragment(window.location.hash, window.location.pathname, window.location.search)
+    if (cleanUrl) window.history.replaceState(window.history.state, '', cleanUrl)
+    void refresh()
+  }, [refresh])
 
   const visible = useMemo(() => {
     const term = query.trim().toLocaleLowerCase()
