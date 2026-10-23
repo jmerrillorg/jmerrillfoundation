@@ -62,7 +62,7 @@ export default function Navigation() {
         </Link>
 
         {/* Desktop Nav */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }} className="hidden md:flex">
+        <div style={{ alignItems: 'center', gap: '2rem' }} className="hidden md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -110,7 +110,6 @@ export default function Navigation() {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
-            display: 'none',
             background: 'none',
             border: 'none',
             color: '#FFFFFF',

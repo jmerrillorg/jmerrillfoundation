@@ -14,7 +14,8 @@
     "test:volunteer-intake": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test scripts/volunteer_intake_tests.mjs scripts/volunteer_notice_tests.mjs scripts/volunteer_reconciler_tests.mjs scripts/volunteer_review_age_tests.mjs scripts/review_age_telemetry_tests.mjs",
     "start": "next start",
     "lint": "eslint .",
-    "test:meal-reservations": "node --test scripts/test-meal-reservations.mjs"
+    "test:meal-reservations": "node --test scripts/test-meal-reservations.mjs",
+    "test:thanksgiving-roster": "node --test scripts/test-thanksgiving-roster.mjs"
   },
   "dependencies": {
     "@azure/identity": "4.13.3",
