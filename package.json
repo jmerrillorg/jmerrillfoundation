@@ -18,9 +18,9 @@
     "test:thanksgiving-roster": "node --test scripts/test-thanksgiving-roster.mjs"
   },
   "dependencies": {
-    "@azure/identity": "4.13.3",
+    "@azure/identity": "4.14.1",
     "applicationinsights": "3.17.0",
-    "next": "16.3.8",
+    "next": "16.4.5",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },
@@ -30,14 +30,15 @@
     "@types/react-dom": "19.2.7",
     "autoprefixer": "^10.0.1",
     "eslint": "9.39.5",
-    "eslint-config-next": "16.3.6",
+    "eslint-config-next": "16.4.5",
     "postcss": "^8.5.28",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
   "pnpm": {
     "overrides": {
-      "postcss-selector-parser": "6.1.4"
+      "postcss-selector-parser": "6.1.5",
+      "zod@4.6.5": "4.6.6"
     }
   }
 }
