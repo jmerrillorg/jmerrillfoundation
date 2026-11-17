@@ -37,6 +37,7 @@
   },
   "pnpm": {
     "overrides": {
+      "@opentelemetry/instrumentation-http": "0.222.0",
       "postcss-selector-parser": "6.1.5",
       "zod@4.6.5": "4.6.6"
     }
