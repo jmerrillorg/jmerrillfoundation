@@ -1,5 +1,6 @@
 import test from 'node:test'; import assert from 'node:assert/strict'; import { randomUUID } from 'node:crypto';
 import { reserve, parseSubmission } from '../src/lib/mealReservation.ts';
+import { GET as getThanksgiving, POST as postThanksgiving } from '../src/app/api/thanksgiving/route.ts';
 function store(capacity=2) { let ledger={event:'test',capacity,reservations:[]};let version=0;return {async read(){return {ledger:structuredClone(ledger),etag:String(version)}},async replace(next,etag){if(etag!==String(version))return false;ledger=structuredClone(next);version++;return true}} }
 const input=(address='1 Main St')=>parseSubmission({requestId:randomUUID(),name:'Test household',email:'test@example.org',phone:'6145550100',address,unit:'',city:'Columbus',state:'OH',zip:'43207',householdConsent:true});
 test('concurrent final slot cannot oversell',async()=>{const s=store(1);const results=await Promise.allSettled([reserve(s,input('1 Main St'),'test',1),reserve(s,input('2 Main St'),'test',1)]);assert.equal(results.filter(r=>r.status==='fulfilled').length,1);assert.equal((await s.read()).ledger.reservations.length,1)});
@@ -12,3 +13,26 @@ test('inaccessible storage cannot report success',async()=>{await assert.rejects
 test('wrong event or capacity fails closed',async()=>{await assert.rejects(reserve(store(),input(),'other',2),/UNAVAILABLE/);await assert.rejects(reserve(store(),input(),'test',60),/UNAVAILABLE/)});
 test('invalid and missing consent rejected',()=>{assert.throws(()=>parseSubmission({...input(),householdConsent:false}),/INVALID/);assert.throws(()=>parseSubmission({...input(),email:'invalid'}),/INVALID/)});
 test('lost success response retries without another reservation',async()=>{const backing=store();let first=true;const s={read:()=>backing.read(),replace:async(...args)=>{const result=await backing.replace(...args);if(first){first=false;throw Error('response lost')}return result}};const b=input();await assert.rejects(reserve(s,b,'test',2));assert.equal((await reserve(s,b,'test',2)).replay,true);assert.equal((await backing.read()).ledger.reservations.length,1)});
+
+test('closed Thanksgiving route reports closure and refuses new reservations even if the old flag is enabled', async (t) => {
+  const prior = process.env.THANKSGIVING_REGISTRATION_ENABLED;
+  process.env.THANKSGIVING_REGISTRATION_ENABLED = 'true';
+  t.after(() => {
+    if (prior === undefined) delete process.env.THANKSGIVING_REGISTRATION_ENABLED;
+    else process.env.THANKSGIVING_REGISTRATION_ENABLED = prior;
+  });
+  const availability = await getThanksgiving();
+  assert.equal(availability.status, 200);
+  assert.equal(availability.headers.get('cache-control'), 'no-store');
+  assert.deepEqual(await availability.json(), { state: 'closed' });
+  const request = new Request('https://jmerrill.foundation/api/thanksgiving', {
+    method: 'POST',
+    headers: { origin: 'https://jmerrill.foundation', 'content-type': 'application/json' },
+    body: JSON.stringify(input()),
+  });
+  const submission = await postThanksgiving(request);
+  assert.equal(submission.status, 410);
+  assert.equal(submission.headers.get('cache-control'), 'no-store');
+  assert.deepEqual(await submission.json(), { error: 'CLOSED' });
+  assert.equal(request.bodyUsed, false);
+});

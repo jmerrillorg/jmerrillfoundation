@@ -19,8 +19,8 @@ const opportunities = [
   {
     icon: '🍽',
     title: 'Community Table',
-    description: 'Help us serve Thanksgiving meals to Columbus families. Our 2026 goal is 150 families. We need help with food prep, distribution, and logistics.',
-    commitment: '1 day, November 2026',
+    description: 'Ask us about future Community Table opportunities in Columbus, including food preparation, distribution, and logistics.',
+    commitment: 'Varies by event',
     tag: 'In-Person',
   },
   {
